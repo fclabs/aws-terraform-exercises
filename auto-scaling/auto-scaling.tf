@@ -282,4 +282,16 @@ resource "aws_autoscaling_group" "as_grp" {
     } ]
 }
 
+resource "aws_autoscaling_policy" "as_pol_cpu" {
+    name = "ASG-policy-cpu"
+    autoscaling_group_name = aws_autoscaling_group.as_grp.name 
+    policy_type = "TargetTrackingScaling"
+    estimated_instance_warmup = 120
 
+    target_tracking_configuration {
+            predefined_metric_specification {
+                predefined_metric_type = "ASGAverageCPUUtilization"
+            }
+            target_value = 50
+    }
+}
