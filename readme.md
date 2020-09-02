@@ -20,11 +20,10 @@ cd lab
 make clean
 ```
 
-## [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
+## Labs
+* [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
+* [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
+* [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
+* [HA Wordpress deployment](ha-wordpress/)
 
-Creates A VPC with two subnets in different subnets, an Instance in each subnet and a classic ELB with an HTTP health-check
-
-## [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
-
-Creates A VPC with two subnets in different subnets, an Instance in each subnet and an Application ELB with an HTTP listener, a target group and a sample rule.
 
