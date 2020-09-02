@@ -8,7 +8,11 @@ A load balancer accepts incoming traffic from clients and routes requests to its
 
 You configure your load balancer to accept incoming traffic by specifying one or more listeners. A listener is a process that checks for connection requests. It is configured with a protocol and port number for connections from clients to the load balancer. Likewise, it is configured with a protocol and port number for connections from the load balancer to the targets.
 
+## Lab excersice
 
+* Create an Application ELB and see how the traffic is distributed among the target group
+* Shut down a server and see how the ELB detects it and redistribute the traffic
+* Verify how the listener rules can create conditional actions like redirect. 
 
 References: 
 * [What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)

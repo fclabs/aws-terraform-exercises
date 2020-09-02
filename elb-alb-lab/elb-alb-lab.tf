@@ -311,4 +311,6 @@ resource "aws_lb_listener_rule" "search" {
     }
 }
 
-
+output "lb_url" {
+    value = aws_lb.web.dns_name
+}
