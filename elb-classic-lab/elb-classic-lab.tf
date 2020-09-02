@@ -268,4 +268,7 @@ resource "aws_elb" "classic" {
 
 }
 
+output "elb_url" {
+    value = aws_elb.classic.dns_name
+}
 
