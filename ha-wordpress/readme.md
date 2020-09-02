@@ -5,7 +5,7 @@
 Create a Fault tolerant Lab for Wordpress server
 
 Network Diagram
-![Network-Diagram](images/HA-Design.png)
+![Network-Diagram](../images/HA-Design.png)
 
 ## Lab takeouts
 
