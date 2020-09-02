@@ -1,2 +1,6 @@
-# aws-terraform-execises
-AWS Terraform Practice Labs for AWS Certifications
+# Terraform script to create and test AWS Lab Excersice
+
+## [Load Balancer and Health-Checkers](elb-lab/readme.mb)
+
+
+

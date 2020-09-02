@@ -1,0 +1,5 @@
+*/.terraform
+*/*.terraform
+*/terraform.tfstate*
+secrets.auto.tfvars
+*/plan.out
