@@ -13,6 +13,13 @@ cd lab
 make apply
 ```
 
+Don't forget to destray all the created resources, that probable will cost you $$$. ```make destroy```will eliminate AWS resources and ```make clean``` will also clean terraform state files. 
+
+```
+cd lab
+make clean
+```
+
 ## [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
 
 Creates A VPC with two subnets in different subnets, an Instance in each subnet and a classic ELB with an HTTP health-check
