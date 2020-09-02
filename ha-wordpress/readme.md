@@ -1,5 +1,7 @@
 # HA Wordpress Lab
-## Lab objetive
+
+## Lab objectives
+
 Create a Fault tolerant Lab for Wordpress server
 
 Network Diagram
