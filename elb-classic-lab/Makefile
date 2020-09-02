@@ -11,6 +11,6 @@ plan: *.tf
 apply: plan
 	terraform apply "plan.out"
 
-destroy: plan
+destroy: 
 	terraform destroy $(vars) -auto-approve
 
