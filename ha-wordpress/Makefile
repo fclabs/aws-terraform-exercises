@@ -14,6 +14,9 @@ apply: plan
 destroy: 
 	terraform destroy $(vars) -auto-approve
 
+show: 
+	terraform show 
+
 clean: destroy
 	rm -rf plan.out terraform.tfstate*
     
