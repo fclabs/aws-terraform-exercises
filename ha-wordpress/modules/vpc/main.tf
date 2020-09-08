@@ -56,8 +56,6 @@ resource "aws_route_table_association" "rt_ass" {
 
     subnet_id = aws_subnet.sn[count.index].id
     # Assign the correct routing table for pub/priv subnets
-
     route_table_id = aws_subnet.sn[count.index].map_public_ip_on_launch ? aws_route_table.rt_pub.id : aws_route_table.rt_priv.id
-
-
 } # end resource
+
