@@ -15,7 +15,7 @@ variable "bucket_name_code" { type = string }
 variable "cf_target_origin_id" { type = string }
 
 variable "db_database" { type = string }
-
+variable "db_name" { type = string }
 
 
 

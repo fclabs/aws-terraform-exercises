@@ -19,11 +19,32 @@ module "s3_code" {
 #    origin_domain_name = module.s3_media.bucket_domain_name
 #}
 
-
 module "vpc" {
     source = "./modules/vpc"
 
     vpc_name = "Lab-WP-HA"
     vpc_cidr  = var.vpc_cidr
     networks = var.vpc_networks 
+}
+
+module "rds" {
+    source = "./modules/rds"
+
+    db_master_user = var.db_master_user
+    db_master_password = var.db_master_password
+    db_database = var.db_database
+    db_name = var.db_name
+    db_subnets = module.vpc.vpc_subnet_privs
+    db_vpc = module.vpc.id
+}
+
+            
+output "debug_vpc_id" {
+    value = module.vpc.id
+}
+output "debug_sub_privs" {
+    value = module.vpc.vpc_subnet_pubs
+}
+output "debug_sub_pubs" {
+    value = module.vpc.vpc_subnet_privs
 }
