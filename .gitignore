@@ -3,3 +3,4 @@
 */terraform.tfstate*
 secrets.auto.tfvars
 */plan.out
+*/.terraform.tfstate*
