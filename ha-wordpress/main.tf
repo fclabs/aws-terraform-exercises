@@ -11,6 +11,9 @@ module "s3_code" {
     bucket = var.bucket_name_code
 }
 
+### Create IAM Roles to manage the S3 Buckets
+
+
 ### Create CloufFront distribution
 #module "cloudfront-media" {
 #    source = "./modules/cloudfront"
@@ -27,17 +30,17 @@ module "vpc" {
     networks = var.vpc_networks 
 }
 
-module "rds" {
-    source = "./modules/rds"
+### Create RDS instance
+# module "rds" {
+#     source = "./modules/rds"
 
-    db_master_user = var.db_master_user
-    db_master_password = var.db_master_password
-    db_database = var.db_database
-    db_name = var.db_name
-    db_subnets = module.vpc.vpc_subnet_privs
-    db_vpc = module.vpc.id
-}
-
+#     db_master_user = var.db_master_user
+#     db_master_password = var.db_master_password
+#     db_database = var.db_database
+#     db_name = var.db_name
+#     db_subnets = module.vpc.vpc_subnet_privs
+#     db_vpc = module.vpc.id
+# }
             
 output "debug_vpc_id" {
     value = module.vpc.id
@@ -47,4 +50,10 @@ output "debug_sub_privs" {
 }
 output "debug_sub_pubs" {
     value = module.vpc.vpc_subnet_privs
+}
+output "debug_s3_media_arn" {
+    value = module.s3_media.arn
+}
+output "debug_s3_code_arn" {
+    value = module.s3_code.arn
 }
