@@ -11,8 +11,34 @@ module "s3_code" {
     bucket = var.bucket_name_code
 }
 
-### Create IAM Roles to manage the S3 Buckets
-
+### Create IAM Policy to manage the S3 buckets fron the instances
+locals {
+    s3_instance_policy = <<EOT
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "ObjectActions",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:PutObject",
+                        "s3:PutObjectAcl",
+                        "s3:GetObject",
+                        "s3:GetObjectAcl",
+                        "s3:DeleteObject"
+                    ],
+                    "Resource": [ "${module.s3_media.arn}/*" , "${module.s3_code.arn}/*" ]
+                },
+                {
+                    "Sid": "ListObjectBucket",
+                    "Effect": "Allow",
+                    "Action": "s3:ListBucket",
+                    "Resource": [ "${module.s3_media.arn}" , "${module.s3_code.arn}" ]
+                }
+            ]
+        }
+    EOT
+}
 
 ### Create CloufFront distribution
 #module "cloudfront-media" {
@@ -56,4 +82,7 @@ output "debug_s3_media_arn" {
 }
 output "debug_s3_code_arn" {
     value = module.s3_code.arn
+}
+output "debug_iam_policy" {
+    value = local.s3_instance_policy
 }
