@@ -2,12 +2,12 @@
 
 ### Create S3 buckets
 module "s3_media" {
-    source = "./modules/s3"
+    source = "../modules/s3"
     bucket = var.bucket_name_media
 }
 
 module "s3_code" {
-    source = "./modules/s3"
+    source = "../modules/s3"
     bucket = var.bucket_name_code
 }
 
@@ -42,7 +42,7 @@ EOT
 }
 
 module "iam_ec2_prof" {
-    source = "./modules/iam"
+    source = "../modules/iam"
 
     instance_profiles = [
         {
@@ -54,14 +54,14 @@ module "iam_ec2_prof" {
 
 ### Create CloufFront distribution
 #module "cloudfront-media" {
-#    source = "./modules/cloudfront"
+#    source = "../modules/cloudfront"
 #
 #    target_origin_id = var.cf_target_origin_id 
 #    origin_domain_name = module.s3_media.bucket_domain_name
 #}
 
 module "vpc" {
-    source = "./modules/vpc"
+    source = "../modules/vpc"
 
     vpc_name = "Lab-WP-HA"
     vpc_cidr  = var.vpc_cidr
@@ -70,7 +70,7 @@ module "vpc" {
 
 ### Create RDS instance
 # module "rds" {
-#     source = "./modules/rds"
+#     source = "../modules/rds"
 
 #     db_master_user = var.db_master_user
 #     db_master_password = var.db_master_password
