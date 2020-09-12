@@ -14,30 +14,42 @@ module "s3_code" {
 ### Create IAM Policy to manage the S3 buckets fron the instances
 locals {
     s3_instance_policy = <<EOT
+{
+    "Version": "2012-10-17",
+    "Statement": 
+    [
         {
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Sid": "ObjectActions",
-                    "Effect": "Allow",
-                    "Action": [
-                        "s3:PutObject",
-                        "s3:PutObjectAcl",
-                        "s3:GetObject",
-                        "s3:GetObjectAcl",
-                        "s3:DeleteObject"
-                    ],
-                    "Resource": [ "${module.s3_media.arn}/*" , "${module.s3_code.arn}/*" ]
-                },
-                {
-                    "Sid": "ListObjectBucket",
-                    "Effect": "Allow",
-                    "Action": "s3:ListBucket",
-                    "Resource": [ "${module.s3_media.arn}" , "${module.s3_code.arn}" ]
-                }
-            ]
+            "Sid": "ObjectActions",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [ "${module.s3_media.arn}/*" , "${module.s3_code.arn}/*" ]
+        },
+        {
+            "Sid": "ListObjectBucket",
+            "Effect": "Allow",
+            "Action": "s3:ListBucket",
+            "Resource": [ "${module.s3_media.arn}" , "${module.s3_code.arn}" ]
         }
-    EOT
+    ]
+}
+EOT
+}
+
+module "iam_ec2_prof" {
+    source = "./modules/iam"
+
+    instance_profiles = [
+        {
+            name = "Wordpress-HA-S3-Buckets-Access"
+            policy = local.s3_instance_policy
+        }
+    ]
 }
 
 ### Create CloufFront distribution
@@ -85,4 +97,7 @@ output "debug_s3_code_arn" {
 }
 output "debug_iam_policy" {
     value = local.s3_instance_policy
+}
+output "debug_iam_instance_profiles" {
+    value = module.iam_ec2_prof.instance_profiles
 }
