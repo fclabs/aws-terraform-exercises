@@ -78,6 +78,7 @@ module "vpc" {
 #     db_name = var.db_name
 #     db_subnets = module.vpc.vpc_subnet_privs
 #     db_vpc = module.vpc.id
+#     db_multi_az = true
 # }
             
 output "debug_vpc_id" {
