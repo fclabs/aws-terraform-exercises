@@ -23,6 +23,8 @@ resource "aws_instance" "i" {
     instance_type = var.instance_type
 
     user_data = var.instance_user_data
+    iam_instance_profile = var.iam_instance_profile
+    key_name = var.instance_key_name
 
     vpc_security_group_ids = [ local.instance_sg ]
 

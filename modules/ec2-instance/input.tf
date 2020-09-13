@@ -13,6 +13,12 @@ variable "instance_subnet" {
     description = "Instance VPC Subnet were the instance will be deployed.Required"
 }
 
+variable "instance_key_name" {
+    type = string   
+    description = "Instance Key Pair name to connect. Default: no key pair"
+    default = null
+}
+
 variable "instance_type" {
     type = string
     description = "Instance type. Default t3.micro"
@@ -28,5 +34,11 @@ variable "instance_user_data" {
 variable "instance_security_group" {
     type = string
     description = "Instance Security Group to be assigned. If it's not defined, an new empty one will be created"
+    default = null
+}
+
+variable "iam_instance_profile" {
+    type = string
+    description = "IAM Instance profile to be assigned. Default: No IAM profile"
     default = null
 }
