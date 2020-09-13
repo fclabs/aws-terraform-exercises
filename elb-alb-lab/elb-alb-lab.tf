@@ -146,6 +146,14 @@ resource "aws_key_pair" "lab" {
     public_key = var.aws_key_pair_pub
 }
 
+# module kp {
+#     source  = "../modules/key_pair"
+
+#     kp_name = "lab"
+#     kp_pub = var.aws_key_pair_pub
+# }
+# output kp_id
+# Key Pair ID
 
 
 ####### Instances
