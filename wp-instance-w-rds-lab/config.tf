@@ -41,8 +41,13 @@ variable "vpc_networks" {
           name = "Private-east-1a"
           az = "us-east-1a"
           public = false
-          cidr_network = "192.168.3.0/24"
+          cidr_network = "192.168.2.0/24"
       },
-
+      {
+          name = "Private-east-1b"
+          az = "us-east-1b"
+          public = false
+          cidr_network = "192.168.3.0/24"
+      }
   ]
 }
