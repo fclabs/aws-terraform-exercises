@@ -30,6 +30,58 @@ module "rds" {
 # output "db_endpoint"
 # FQDN:port to use to connect to database
 
+# Create a Security Group for the Web Instance
+module sgweb_create {
+    source = "../modules/security_group"
+
+    vpc_id = module.vpc.id
+}
+
+# Add SSH ingress rule for Web Server Instance
+module sgweb_add_ssh {
+    source = "../modules/security_group"
+
+    id = module.sgweb_create.security_group_id
+
+    operation = "add_cidr"
+
+    type = "ingress"
+    from = "0.0.0.0/0"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+}
+# Add Egreee rule for Web Server Instance
+module sgweb_add_egress_all {
+    source = "../modules/security_group"
+
+    id = module.sgweb_create.security_group_id
+
+    operation = "add_cidr"
+
+    type = "egress"
+    from = "0.0.0.0/0"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+}
+
+# Add MYSQL access from WebSvr security group to RDS instance
+module sgrds_add_mysql {
+    source = "../modules/security_group"
+
+    id = module.rds.db_security_group
+
+    operation = "add_source_sg"
+
+    type = "ingress"
+    from = module.websvr.instance_security_group
+    from_port = 3306
+    to_port = 3306
+    protocol = "tcp"
+}
+
+
 locals {
     instance_ami = var.instance_ami
 
@@ -69,53 +121,9 @@ module "websvr" {
     instance_subnet = module.vpc.vpc_subnet_pubs[0]
     instance_user_data = local.instance_user_data
     instance_key_name = module.kp.kp_id
-
+    instance_security_group = module.websvr.instance_security_group
 }
 # output "instance_security_group" 
 # security group associated with the instance
 # output "instance_id"
 # Instance id 
-
-# Add SSH ingress rule for Web Server Instance
-module sgweb_add_ssh {
-    source = "../modules/security_group"
-
-    id = module.websvr.instance_security_group
-
-    operation = "add_cidr"
-
-    type = "ingress"
-    from = "0.0.0.0/0"
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-}
-# Add Egreee rule for Web Server Instance
-module sgweb_add_egress_all {
-    source = "../modules/security_group"
-
-    id = module.websvr.instance_security_group
-
-    operation = "add_cidr"
-
-    type = "egress"
-    from = "0.0.0.0/0"
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-}
-
-# Add MYSQL access from WebSvr security group to RDS instance
-module sgrds_add_mysql {
-    source = "../modules/security_group"
-
-    id = module.rds.db_security_group
-
-    operation = "add_source_sg"
-
-    type = "ingress"
-    from = module.websvr.instance_security_group
-    from_port = 3306
-    to_port = 3306
-    protocol = "tcp"
-}
