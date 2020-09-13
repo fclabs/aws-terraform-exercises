@@ -45,7 +45,7 @@ resource "aws_db_instance" "db" {
     username = var.db_master_user
     password = var.db_master_password
     
-    multi_az = true
+    multi_az = var.db_multi_az
     db_subnet_group_name = aws_db_subnet_group.sg.name
     publicly_accessible = false
     skip_final_snapshot = true

@@ -26,6 +26,13 @@ variable "db_max_allocated_storage" {
     default = 0
     description = "Maximum allowed allocated storage on creation. Default is 0, disabling storage grow"
 }
+
+variable "db_multi_az" {
+    type = bool
+    default = false
+    description = "Require multi AZ. Default: false"
+}
+
 variable "db_storage_class" {
     type = string
     default = "gp2"
