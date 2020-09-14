@@ -20,32 +20,5 @@ module sgweb_create {
     vpc_id = module.vpc.id
 }
 
-# Add SSH ingress rule for Web Server Instance
-module sgweb_add_ssh {
-    source = "../../modules/security_group"
 
-    id = module.sgweb_create.security_group_id
-
-    operation = "add_cidr"
-
-    type = "ingress"
-    from = "0.0.0.0/0"
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-}
-# Add egress rule for Web Server Instance
-module sgweb_add_egress_all {
-    source = "../../modules/security_group"
-
-    id = module.sgweb_create.security_group_id
-
-    operation = "add_cidr"
-
-    type = "egress"
-    from = "0.0.0.0/0"
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-}
 
