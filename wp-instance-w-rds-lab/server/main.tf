@@ -110,3 +110,19 @@ module "websvr" {
 # security group associated with the instance
 # output "instance_id"
 # Instance id 
+# output "instance_public_ip"
+# Pubñic IP for the server
+
+module "www" {
+    source = "../../modules/route53"
+
+    zone = "fclabs.solutions"
+    records = [
+        {
+            name = "www"
+            ttl = 60
+            type = "A"
+            values = [ module.websvr.instance_public_ip ]           
+        }
+    ]
+}
