@@ -25,24 +25,29 @@ variable operation {
 variable type {
     type = string
     description = "(Required) The type of rule being created. Valid options are ingress (inbound) or egress (outbound)."
+    default = "ingress"
 }
 
 variable from {
     type = string
     description = "Security Group or CIDR block"
+    default = null
 }
 
 variable from_port {
     type = number
     description = "The start port (or ICMP type number if protocol is icmp or icmpv6)"    
+    default = null
 }
 
 variable to_port {
     type = number
     description = "(Required) The end port (or ICMP code if protocol is icmp)."    
+    default = null
 }
 
 variable protocol {
     type = string
     description = "The protocol. If not icmp, icmpv6, tcp, udp, or -1 use the protocol number. Required"    
+    default = null
 }
