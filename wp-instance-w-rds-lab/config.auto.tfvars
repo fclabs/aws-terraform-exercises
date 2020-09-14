@@ -1,4 +1,6 @@
 
+lab_name = "WP-Stack"
+sg_name_websvr = "WP-Stack-SG-WebServer"
 
 db_database = "wordpress"
 db_name = "wordpress-ha"
