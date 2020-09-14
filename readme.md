@@ -21,6 +21,8 @@ make clean
 ```
 
 ## Labs
+* [Wordpress Instance with RDS creation from bootscript](wp-instance-w-rds-lab/)
+* [AMI creation from Instance](ami-lab/)
 * [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
 * [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
 * [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
