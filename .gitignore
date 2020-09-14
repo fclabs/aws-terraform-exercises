@@ -1,6 +1,6 @@
-*/.terraform
-*/*.terraform
-*/terraform.tfstate*
+**/.terraform
+**/*.terraform
+**/terraform.tfstate*
 secrets.auto.tfvars
-*/plan.out
+**/plan.out
 **/.terraform.tfstate*
