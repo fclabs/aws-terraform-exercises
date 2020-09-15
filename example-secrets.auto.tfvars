@@ -1,0 +1,13 @@
+
+# Secrets
+# AWS credentials
+aws_access_key = "123ASADSFDGGFGFG"
+aws_secret_key = "XAz6fBiKGi3XphOzNWnQHxcAunZM4Urf47HTqwHY+lc7i"
+
+# SSH key pair used to access the instances
+aws_key_pair_pub = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDktBbOQ77CcByrJZGcGDc2jCD4psrBh+lcVkJNhYWwlEmqkNPAwMR9yEPLUDVemOlipHenBAwgQePMDT9lntFvxTRcLZ4Blxl1hp4oBN+GQz+Nq3UJesJxai11Rv5HMObDUL24EN7mIUhwSJEIAchnx5B8t2T7N+9870LAfu967lnq8nXTUP/h8O+hfxTsZy0RSNZBPIMrpTljxHVO3UGtUlyMURKfzxMj1niLlbPsBIReFbdjF/RiKiuBUYKcgeoC+hVLY6xQ3NdiTB+7TzvU8+hSX/WPFIyXHkFD069RjPL5xWmSAxpZf8kcQY8iY6pRvyGZz6Rh6VHGsNUkXBnUUHNgPsltyztWgL+lMEuqvFMpxUgIkdcuNjMzq3FQr1nb8VOKLNTdyGY9uUvKsetkP9kOpOmmFQvPXg/AO0yPVAXW4mB5H1xAQh1PPeLgVbEAs+LB4Iolj8Mp/bMmazZmx/m/1qdEtgh/seQbcLKEdPK9dn5+7YIt9Lfa8e9vG+ozjNNxA3VuRcuXyHJVscroOX54uwNagE0tT5Of946nQTEQtEPotOW0qcS++OwWFfTerN4cfJqL05jM1aw37/7dSwLlrr54KKXzEBhH8EXLCDSJRgcm0q1/uUzFcBWTMayETl8tsNXRWcfuQYnexpKbZ8d32fhfWe+QXd9NVQRagw== user"
+local_key_pair_priv = "/home/user/.ssh/validation_id_rsa"
+
+# RDS Master user
+db_master_password = "password"
+db_master_user = "dba"
