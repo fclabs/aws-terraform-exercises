@@ -20,3 +20,9 @@ module sgweb_create {
     vpc_id = module.vpc.id
 }
 
+module sglb_create {
+    source = "../../modules/security_group"
+
+    name = var.sg_name_lbfront
+    vpc_id = module.vpc.id
+}
