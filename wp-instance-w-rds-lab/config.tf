@@ -7,6 +7,8 @@ variable "aws_key_pair_pub" { type = string }
 variable "local_key_pair_priv" { type = string }
 variable "db_master_password" { type = string }
 variable "db_master_user" { type = string }
+variable "dns_zone" { type = string }
+
 ### Define Secret valies in secrets.auto.tfvars (not included in git repo)
 #########################################################A
 

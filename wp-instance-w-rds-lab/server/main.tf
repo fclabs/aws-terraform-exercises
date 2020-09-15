@@ -116,7 +116,7 @@ module "websvr" {
 module "www" {
     source = "../../modules/route53"
 
-    zone = "fclabs.solutions"
+    zone = var.dns_zone
     records = [
         {
             name = "www"
