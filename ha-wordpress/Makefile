@@ -1,22 +1,12 @@
 .DEFAULT_GOAL := apply
 
-vars = -var-file="../secrets.auto.tfvars"
+ORDER := s3 cloudfront networking elb database servers
+DESTROY_ORDER := servers elb database networking cloudfront s3
 
-init: 
-	terraform init
+init plan apply: $(ORDER)
+destroy clean: $(DESTROY_ORDER)
 
-plan: *.tf init 
-	terraform plan $(vars) -out plan.out
+$(ORDER):
+	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-apply: plan
-	terraform apply "plan.out"
-
-destroy: 
-	terraform destroy $(vars) -auto-approve
-
-show: 
-	terraform show 
-
-clean: destroy
-	rm -rf plan.out terraform.tfstate*
-    
+.PHONY: $(ORDER) init plan apply destroy clean
