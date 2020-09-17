@@ -12,6 +12,8 @@ variable "dns_zone" { type = string }
 ### Define Secret valies in secrets.auto.tfvars (not included in git repo)
 #########################################################A
 
+variable "aws_region"  { type = string }
+
 variable "lab_name" { type = string }
 variable "sg_name_websvr" { type = string }
 variable "sg_name_lbfront" { type = string }
@@ -25,12 +27,19 @@ variable "cf_target_origin_id" { type = string }
 variable "db_database" { type = string }
 variable "db_name" { type = string }
 
-variable "elb_name" { type = string }
+variable "lb_name" { type = string }
+variable "lb_target_group_name" { type = string }
+
+variable "lc_name" { type = string }
+variable "lc_image" { type = string }
+variable "lc_instance_type" { type = string }
+
+variable "autoscaling_group_name" { type = string }
 
 provider "aws" {
     access_key = var.aws_access_key 
     secret_key = var.aws_secret_key 
-    region     = "us-east-1"
+    region     = var.aws_region
 }
 
 ## VPC Network definitions
