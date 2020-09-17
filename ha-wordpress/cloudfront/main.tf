@@ -13,4 +13,17 @@ module "cloudfront-media" {
    origin_domain_name = data.aws_s3_bucket.s3media.bucket_domain_name
 }
 
-           
+# Register the cloudfront FQDN as media record on DNS zone 
+module "dns_record_media" {
+    source = "../../modules/route53"
+
+    zone = var.dns_zone
+    records = [
+        {
+            name = "media"
+            ttl = 60
+            type = "CNAME"
+            values = [ module.cloudfront-media.domain_name ]           
+        }
+    ]
+}         
