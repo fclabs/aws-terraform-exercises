@@ -39,6 +39,10 @@ resource "aws_lb_target_group" "tg" {
     vpc_id = lookup( var.lb_target_groups[ count.index ] , "vpc_id" )
     target_type = "instance"
 
+    stickiness {
+        type = "lb_cookie"
+    }
+
     tags = {
         Name = lookup( var.lb_target_groups[ count.index ] , "name" )
         LB = local.lb.name
@@ -55,6 +59,7 @@ resource "aws_lb_listener" "list" {
     default_action {
         type             = "forward"
         target_group_arn = aws_lb_target_group.tg[ count.index ].arn
+
     }
 }
 
