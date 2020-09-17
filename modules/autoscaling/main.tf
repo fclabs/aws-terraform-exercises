@@ -1,16 +1,8 @@
 
 
-# Search launch configuration if the name is not empty and lc_create is not true
-data "aws_launch_configuration" "lc_old" {
-    count = (var.lc_name != "" && !var.lc_create) ? 1 : 0 
-
-    name = var.lc_name
-}
- 
 # Create launch configuration if lc_create in true
 resource "aws_launch_configuration" "lc_new" {
-    count = var.lc_create ? 1 : 0 
-
+    
     name = var.lc_name
     image_id = var.lc_image_id
     instance_type = var.lc_instance_type
@@ -24,6 +16,16 @@ resource "aws_launch_configuration" "lc_new" {
     }
 }
 
-locals {
-    launch_group_name = var.lc_create ? aws_launch_configuration.lc_new[0].name : data.aws_launch_configuration.lc_old[0].name
+### Autoscaling group
+
+resource "aws_autoscaling_group" "ag_new" {
+    
+    name = var.ag_name
+    
+    launch_configuration = aws_launch_configuration.lc_new.id
+    max_size = var.ag_max_size
+    min_size = var.ag_min_size
+    target_group_arns = var.ag_target_group_arns
+    vpc_zone_identifier = var.ag_vpc_zone_identifier 
+
 }

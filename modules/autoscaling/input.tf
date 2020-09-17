@@ -4,12 +4,6 @@
 variable "lc_name" {
     type = string
     description = "Launch configuration group Name. Mandatory"
-    default = ""
-}
-variable "lc_create" {
-    type = bool
-    description = "Define if the Launch configuration group needs to be created. Default false"
-    default = false
 }
 variable "lc_image_id" {
     type = string
@@ -44,18 +38,37 @@ variable "lc_security_groups" {
 }
 ###
 
-### Autoscaling group vars
-# variable "ag_name" {
-#     type = string
-#     description = "Autoscaling group Name. Mandatory"
-#     default = ""
-# }
 
-# variable "ag_create" {
-#     type = bool
-#     description = "Define if the Launch configuration group needs to be created. Default false"
-#     default = false
-# }
+variable "ag_name" {
+    type = string
+    description = "Autoscaling group Name. Mandatory"
+}
+variable "ag_launch_configuration" {
+    type = string
+    description = "Launch configuration group for the autoscaling group"
+    default = null
+}
+variable "ag_min_size" {
+    type = number
+    description = "Autoscaling group min size. Required"
+    default = null
+}
+variable "ag_max_size" {
+    type = number
+    description = "Autoscaling group min size. Required"
+    default = null
+}
+variable "ag_target_group_arns" {
+    type = list(string)
+    description = "Autoscaling group target group to be updated. Required"
+    default = null
+}
+ 
+variable "ag_vpc_zone_identifier" {
+    type = list(string)
+    description = "Autoscaling group vpc_zone_identifier were deploy. Required"
+    default = null
+}
 
 ###
 
