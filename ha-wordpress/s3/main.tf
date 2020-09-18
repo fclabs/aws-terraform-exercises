@@ -1,7 +1,10 @@
+
 ### Create S3 buckets
 module "s3_media" {
     source = "../../modules/s3"
     bucket = var.bucket_name_media
+
+    bucket_public = true
 }
 
 module "s3_code" {
