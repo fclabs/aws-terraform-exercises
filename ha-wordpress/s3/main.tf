@@ -43,7 +43,7 @@ EOT
 }
 
 module "iam_ec2_prof" {
-    source = "../../modules/iam"
+    source = "../../modules/iam-ec2-profile"
 
     instance_profiles = [
         {
