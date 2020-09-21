@@ -27,6 +27,7 @@ make clean
 * [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
 * [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
 * [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
-* [HA Wordpress deployment](ha-wordpress/)
+* [KMS Key Management and use](kms-lab/)
+* [High Availability Wordpress deployment](ha-wordpress/)
 
 
