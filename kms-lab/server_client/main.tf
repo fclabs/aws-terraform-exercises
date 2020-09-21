@@ -68,7 +68,7 @@ locals {
 yum install httpd -y
 cd /var/www/html
 # Get the secret blob
-curl http://vault.${var.dns_zone}/secret1 | base64 --decode | aws kms decrypt --ciphertext-blob fileb:///dev/stdin --query Plaintext --output text --region "${var.aws_region}" > cleartext
+curl http://vault.${var.dns_zone}/secret1 | base64 --decode | aws kms decrypt --ciphertext-blob fileb:///dev/stdin --query Plaintext --output text --region "${var.aws_region}" | base64 --decode > cleartext
 service httpd start
 chkconfig httpd on
 EOT

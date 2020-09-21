@@ -67,7 +67,7 @@ locals {
 #!/bin/bash
 yum install httpd -y
 cd /var/www/html
-aws kms encrypt --key-id alias/${var.lab_name} --plaintext "Hola" --query CiphertextBlob --region "${var.aws_region}" > secret1
+aws kms encrypt --key-id alias/${var.lab_name} --plaintext "Hola" --query CiphertextBlob --region "${var.aws_region}" --output text > secret1
 service httpd start
 chkconfig httpd on
 EOT
