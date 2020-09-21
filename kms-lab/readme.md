@@ -18,7 +18,7 @@ The lab is organized with the following resources groups:
   
 ## Takeout from the lab:
 * Every time that you encript the same value, you get different output. KMS includes other changing material with the original data, included the key alias used for encryption
-* No alias is required to decript, becuase it is included in the cyphertext. 
+* No alias is required to decrypt, becuase it is included in the cyphertext. 
 * If you remove the IAM profile from the instance, and you try to run the encryp or decrypt operations, it will not find the key, due to the KMS policies.
 * You can rotate the keys without modify the code (still, you have re encrypt the secrets, of course)
 
