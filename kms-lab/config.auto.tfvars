@@ -8,5 +8,6 @@ sg_name_websvr_client = "KMS-SG-Svr-Client"
 instance_ami = "ami-0c94855ba95c71c99"
 instance_name_vault = "KMS-Vault-Server"
 instance_name_client = "KMS-Client-Server"
+key_pair_name = "lab"
 
 iam_instance_profile_name = "IAM-EC2-Profile-KMS-Usage"

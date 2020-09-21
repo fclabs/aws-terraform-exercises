@@ -6,9 +6,13 @@ variable "aws_secret_key" { type = string }
 variable "aws_key_pair_pub" { type = string }
 variable "local_key_pair_priv" { type = string }
 
+variable "dns_zone" { type = string }
+
 ### This Lab secrets
 variable "aws_account_id" { type = string }
 variable "aws_admin_users" { type = list(string) }
+
+
 
 ### Define Secret valies in secrets.auto.tfvars (not included in git repo)
 #########################################################A
@@ -21,6 +25,7 @@ variable "sg_name_websvr_client" { type = string }
 variable "instance_ami" { type = string }
 variable "instance_name_vault" { type = string }
 variable "instance_name_client" { type = string }
+variable "key_pair_name" { type = string }
 
 variable "iam_instance_profile_name" { type = string }
 
@@ -37,6 +42,12 @@ variable "vpc_cidr_vault" {
 }
 variable "vpc_cidr_client" { 
   default = "192.168.2.0/23" 
+}
+variable "server_subnet_cidr_vault" {
+  default = "192.168.0.0/24" 
+}
+variable "server_subnet_cidr_client" {
+  default = "192.168.2.0/24" 
 }
 variable "vpc_networks_vault" {
     default = [
