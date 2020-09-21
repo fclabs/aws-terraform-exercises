@@ -4,3 +4,4 @@
 **/secrets.auto.tfvars
 **/plan.out
 **/.terraform.tfstate*
+**/backend.tf
