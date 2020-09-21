@@ -15,8 +15,12 @@ The lab is organized with the following resources groups:
   * Will register a route53 record with the vault public IP
 * server_client
   * Will fetch the secret, unencrypt and publish it :)
-  
-## Takeout from the lab:
+
+Use the following URL to see: 
+* the text encrypted: http://vault.you_dns_zone.com/secret1
+* the clear text on client: http://client-ip/cleartext
+
+## Takeouts from the lab:
 * Every time that you encript the same value, you get different output. KMS includes other changing material with the original data, included the key alias used for encryption
 * No alias is required to decrypt, becuase it is included in the cyphertext. 
 * If you remove the IAM profile from the instance, and you try to run the encryp or decrypt operations, it will not find the key, due to the KMS policies.
