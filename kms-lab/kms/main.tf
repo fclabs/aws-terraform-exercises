@@ -40,12 +40,24 @@ module "iam_ec2_prof_kms_usage" {
 ##
 
 ## KMS Policy creation
-module "kms_policy" {
+module "aPol" {
     source = "../../modules/iam-kms-policy"
     
-    kms_root_arn = "arn:aws:iam::${var.aws_account_id}:root"
+    kms_root_arn = "\"arn:aws:iam::${var.aws_account_id}:root\"" 
     kms_admin_arns = [ for u in var.aws_admin_users : "arn:aws:iam::${var.aws_account_id}:user/${u}" ]
-    kms_usage_arns = [ "arn:aws:iam::${var.aws_account_id}:Role/${var.iam_instance_profile_name}" ]
+    kms_usage_arns = [ "arn:aws:iam::${var.aws_account_id}:role/${var.iam_instance_profile_name}" ]
 }
 ##
 
+## Create the key
+resource "aws_kms_key" "lab_key" {
+    description = "${var.lab_name} - Key"
+
+    policy = module.aPol.kms_policy
+}
+
+## Create an alias to the key
+resource "aws_kms_alias" "lab_key_alias" {
+  name          = "alias/${var.lab_name}"
+  target_key_id = aws_kms_key.lab_key.key_id
+}
