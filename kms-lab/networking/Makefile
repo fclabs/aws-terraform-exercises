@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := apply
 
-vars = -var-file="../../secrets.auto.tfvars"
+vars = -var-file="../../secrets.auto.tfvars" -var-file="../secrets.auto.tfvars"
 
 init: 
 	terraform init
