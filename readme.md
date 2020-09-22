@@ -23,11 +23,13 @@ make clean
 ```
 
 ## Labs
+* [Setup S3 & DynamoDB backend to support tfstate ](setup-s3-backend)
 * [Wordpress Instance with RDS creation from bootscript. AMI Creation](wp-instance-w-rds-lab/)
 * [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
 * [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
 * [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
 * [KMS Key Management and use](kms-lab/)
+* [SSM Parameters used by Lambda function](ssm-params-lab/)
 * [High Availability Wordpress deployment](ha-wordpress/)
 
 
