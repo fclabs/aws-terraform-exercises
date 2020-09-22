@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := apply
 
-ORDER := setup-lab
-DESTROY_ORDER := setup-lab 
+ORDER := iam lambda create-ssm-params
+DESTROY_ORDER := create-ssm-params lambda iam
 
 init plan apply: $(ORDER)
 destroy clean: $(DESTROY_ORDER)
