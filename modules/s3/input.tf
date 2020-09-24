@@ -19,3 +19,26 @@ variable "bucket_public" {
     default = false
     description = "Make the s3 bucket public. Default false"
 }
+
+variable "bucket_acl" {
+    type = string
+    default = "private"
+    description = "Canned ACL to setup. Default private"
+}
+
+## Map with website block configuration
+# 
+variable "website" {
+    type = list (
+        object(
+            {
+                index_document = string
+                error_document = string
+                routing_rules = string
+            }
+        )
+    )
+    default = []
+    description = "Configure Website behavior for S3 bucket"
+}
+

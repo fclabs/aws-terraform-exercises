@@ -2,6 +2,18 @@ resource "aws_s3_bucket" "new" {
     count = var.s3_create ? 1 : 0
 
     bucket = var.bucket
+    acl = var.bucket_acl
+
+
+    dynamic "website" {
+        for_each = var.website
+        
+        content {
+            index_document = website.value[ "index_document" ]
+            error_document = website.value[ "error_document" ]
+            routing_rules = website.value[ "routing_rules" ]
+        }
+    }
 }
 # Create the bucket to block public ACLs only on creation
 resource "aws_s3_bucket_public_access_block" "b_pub" {
