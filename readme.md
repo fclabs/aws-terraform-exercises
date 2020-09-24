@@ -31,5 +31,6 @@ make clean
 * [KMS Key Management and use](kms-lab/)
 * [SSM Parameters used by Lambda function](ssm-params-lab/)
 * [High Availability Wordpress deployment](ha-wordpress/)
+* [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
 
 

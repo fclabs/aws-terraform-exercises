@@ -22,3 +22,8 @@ The lab goes throught the following steps:
   * Calculate the mime types for all the files in the site folder
   * Upload each file as bucket objects
   * Create the www record in your DNS zone to point to the S3 website endpoint
+
+Comments and tips:
+* For static web sites hosted in S3 you need to create the bucket with the same name as your FQDN for the base server.
+* Do not use generic policies. Always try use the Principals in policies with the ARN of the resource that will access your object.
+* Limit the access and methods in your API gaetway, to support only the ones required in the lambda functions.
