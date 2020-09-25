@@ -6,3 +6,4 @@
 **/.terraform.tfstate*
 **/backend.tf
 webpage-s3-lambda/site/index.html
+.vscode/settings.json
