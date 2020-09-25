@@ -32,5 +32,6 @@ make clean
 * [SSM Parameters used by Lambda function](ssm-params-lab/)
 * [High Availability Wordpress deployment](ha-wordpress/)
 * [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
+* [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](s3-site-from-repo/)
 
 
