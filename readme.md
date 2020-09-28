@@ -1,12 +1,12 @@
-# Terraform script to create and test AWS Lab Excercises
+# Terraform script to create and test AWS Lab Exercises
 
 ## Introduction
 
-This series of exercises help you to undertand all the resources and services included in the AWS Certificated Associated Exam. For the exam you will need to know how to create them through the AWS Console, but this terraform script will help you to setup each resource and them been able to test configurations or compare results.
+This series of exercises help you to understand all the resources and services included in the AWS Certificated Associated Exam. For the exam you will need to know how to create them through the AWS Console, but this terraform script will help you to setup each resource and them been able to test configurations or compare results.
 
 Additionally, you can use them as a reference about how to create AWS resources with terraform.
 
-To run them, you will need to have terraform installed. A sample secure.auto.tfvars is provided. This file is excluded from the repo ans is where you are going to setup all your credentials. See ```example-secrets.auto.tfvars``` at root folder. 
+To run them, you will need to have terraform installed. A sample secure.auto.tfvars is provided. This file is excluded from the repo and is where you are going to setup all your credentials. See ```example-secrets.auto.tfvars``` at root folder. 
 
 Run them going in each directory using make:
 
