@@ -34,4 +34,6 @@ make clean
 * [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
 * [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](s3-site-from-repo/)
 
-
+## Wishlist Labs
+* S3 bucket for backup with lifecycle and expiration
+* S3 bucket with cross-region-replication (CRR) and MFA deletion for audit records
