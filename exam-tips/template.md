@@ -1,5 +1,5 @@
 # Name
-## Essentials Tips
+## Essential Tips
 
 ### General
 

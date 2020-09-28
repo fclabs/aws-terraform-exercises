@@ -1,5 +1,5 @@
 # S3
-## Essentials Tips
+## Essential Tips
 ### General
 * S3 stands for Simple Storage Service. Is unlimited.
 * Object-Based. Store files in buckets. From 0 to 5TB
@@ -104,8 +104,21 @@ Accessing a deleted object by key vs by key and ID
 
 Permanent Delete by Name and ID
 
+### Object Locks
+* Used to store objects using a write-once-read-many (WORM) model.
+* Prevents objects from being deleted or overwritten for a fixed amount of time or indefinitely.
+* Object Lock provides two ways to manage object retention: retention periods and legal holds.
+  * A retention period specifies a fixed period of time during which an object remains locked. During this period, your object is WORM-protected and can't be overwritten or deleted.
+  * A legal hold provides the same protection as a retention period, but it has no expiration date. Instead, a legal hold remains in place until you explicitly remove it. Legal holds are independent from retention periods.
+* Object Lock works only in versioned buckets, and retention periods and legal holds apply to individual object versions.
+* When you lock an object version, Amazon S3 stores the lock information in the metadata for that object version. 
+* S3 Object Lock provides two retention modes:
+  * Governance mode: users can't overwrite or delete an object version or alter its lock settings unless they have special permissions.
+  * Compliance mode: a protected object version can't be overwritten or deleted by any user, including the root user in your AWS account. When an object is locked in compliance mode, its retention mode can't be changed, and its retention period can't be shortened. Compliance mode ensures that an object version can't be overwritten or deleted for the duration of the retention period.
+* S3 Glacier Vault Lock is for Glacier objects.
+
 ### Replication Management
-* Amazon S3 Replication enables automatic, asynchronous copying of objects across Amazon S3 buckets.
+* Amazon S3 Replication enables automatic, asynchronous copying of objects across Amazon S3 buckets. It requires Versioning enabled in source and destination bucket.
 * Cross-Region Replication (CRR) automatically replicates data between buckets across different AWS Regions. 
 * Same-Region Replication (SRR) is an Amazon S3 feature that automatically replicates data between buckets within the same AWS Region.
 * With Replication CRR & SRR, you can set up replication at a bucket level, a shared prefix level, or an object level using S3 object tags.
@@ -114,12 +127,21 @@ Permanent Delete by Name and ID
   * Consolidate logs from multiple regions
   * Replica environment data (Development to Test)
 * Lifecycle rules are not replicated. They need to be recreated. 
-* Only SS3-KMS bucket can be replicated, but only if the destination bucket is encrypted with KMS.
+* Only SS3-KMS bucket can be replicated, but only if the destination bucket is encrypted with KMS. 
 * Replication is done using SSL
 * Replication Time Control is an SLA about the time taken to replicate the objects. 
+* Does not replicate older objects than when replication was enabled. 
+* Delete markers are not replicated, so you need to delete the object in destination bucket as well. 
 
-### Limitations
-* A single upload can be up to 5 GB. Objects higher than 100 MB it's recommended to use a Multipart upload.
+### Limitations & Performance
+* A single upload can be up to 5 GB. Objects higher than 100 MB it's recommended to use a Multipart upload. Multipart is required for files over 5Gb.
+* Multipart upload allow parallelize uploads, increasing efficiency.
+* In the same way, you can download in parts using S3 Byte-Range fetches. Speed-up downloads with concurrency and if a part fails, only that one needs to be re downloaded.
+* S3 performance is limited by S3 Prefix. Prefix is the part of the key between the object name and the bucket name. 
+  * `bucket-name/folder1/subfolder2/object.txt` **/folder1/subfolder2** is the prefix
+* There is a limitation of 3,500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD requests per second per prefix in a bucket.
+* Distributing objects over different prefix will help to increase concurrency performance.
+* When KMS object encryption is in use, each upload and download count in the KMS quota. Depending the region, there is a limitation on 5000 request per second. 
 
 ### Region for storage
 * S3 can be accessed globally, but you need to choose in which region do you want to store your data
@@ -128,6 +150,16 @@ Permanent Delete by Name and ID
   * Remote to increase your redundancy (disaster recovery purpose)
   * Legal & regulatory requirements
   * Reduce storage costs. Price varies from region to region.
+
+### S3 Select
+* Allows applications to retrieve a set of data from an object using simple SQL expressions increasing performance up to 400% faster and 80% cheaper.
+* You can retrieve partial content of your object based on rows and columns.
+* S3 Select for Glacier does the same in Glacier.
+
+### S3 Share across accounts
+* Using Bucket policies & IAM policies. Programmatic only. Applies to all the bucket.
+* Using Bucket ACLs & IAM (on individual objects). Programmatic only.
+* Cross-Account IAM Roles. Programmatic & Console access.
 
 ## Labs about
 * [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
