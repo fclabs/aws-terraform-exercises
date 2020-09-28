@@ -142,6 +142,7 @@ Permanent Delete by Name and ID
 * There is a limitation of 3,500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD requests per second per prefix in a bucket.
 * Distributing objects over different prefix will help to increase concurrency performance.
 * When KMS object encryption is in use, each upload and download count in the KMS quota. Depending the region, there is a limitation on 5000 request per second. 
+* Use S3 Transfer Acceleration tu speed up data upload/download using closer Edge locations.
 
 ### Region for storage
 * S3 can be accessed globally, but you need to choose in which region do you want to store your data
@@ -161,9 +162,16 @@ Permanent Delete by Name and ID
 * Using Bucket ACLs & IAM (on individual objects). Programmatic only.
 * Cross-Account IAM Roles. Programmatic & Console access.
 
+### AWS DataSync
+* Deployed as an Agent on Windows or Linux servers, is used to move large amount of data from on-premise to AWS.
+* Is used with NFS or SMB file-systems.
+* Replication can be done hourly, daily or weekly.
+* Can copy from EFS to EFS.
+
 ## Labs about
 * [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
 * [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](s3-site-from-repo/)
 
 ## References and complementary readings
 * [S3 FAQ](https://aws.amazon.com/s3/faqs/) (must read before the exam)
+* [S3 Transfer evaluation link](https://s3-accelerate-speedtest.s3-accelerate.amazonaws.com/en/accelerate-speed-comparsion.html)

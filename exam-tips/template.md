@@ -1,4 +1,6 @@
 # Name
+## Concepts
+
 ## Essential Tips
 
 ### General
