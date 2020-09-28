@@ -31,6 +31,8 @@
 * Glacier
 * Glacier Deep Archive
 * Reduced Redundancy Storage (RRS): Being faced out similar to One-Zone IA.
+* S3 Standard is the most expensive. S3 Intelligence Tiering cost the same, but infrequently used objects are moved automatically to S3-IA, which is cheaper. The analysis of the objects cost, so if you have millions of objects it could be expensive.
+* __S3 IA, OZ-IA & Intel Tiering only apply to objects larger than 128KB, stored for a minimum of 30-day term. Smaller object are charges as S3 Standard. Shorter period of time are charged for the 30 days.__
 
 ![S3 Storage Classes](S3-Storage-Classes.png)
 
@@ -55,7 +57,7 @@
 * *Cross Region Replication*: Automatic replication between regions when you upload an object
 
 ### Security
-* ACL for Object-Access control
+* ACL for Object-Access control, Bucket policies for bucket level security.
 * HTTPS for on-transit encryption 
 * Object encryption for data-in-rest encryption
 * Access control is limited using:
@@ -73,10 +75,34 @@
 * Amazon Macie is a AI service that will help you to discover and classify data in S3
 
 ### Lifecycle Management
-* S3 Lifecycle management provides the ability to define the lifecycle of your object with a predefined policy and reduce your cost of storage.
+* S3 Lifecycle management provides the ability to make object transitions between storage classes or object expirations (Amazon deletes expired objects on your behalf)
 * You can also set lifecycle expiration policies to automatically remove objects based on the age of the object.
 * There is no additional cost to set up and apply Lifecycle policies. A transition request is charged per object when an object becomes eligible for transition according to the Lifecycle rule.
 * The S3 Lifecycle policy that expires incomplete multipart uploads allows you to save on costs by limiting the time non-completed multipart uploads are stored
+
+![S3 Supported Transitions](S3-Supported-Transitions.png)
+
+### Versioning
+* Stores all versions of an object (modifications, replacements and deletes).
+* The versioning state applies to all (never some) of the objects in that bucket.
+* Once enabled, it cannot be disabled, only suspended.
+* Versioning MFA Delete use multi-factor authentication to protect unwanted deletes.
+
+![Versioning](Versioning1.png)
+
+Versioning: Each versioning has a unique ID
+
+![Delete with Versioning](Versioning2.png)
+
+Delete with Versioning is not a delete. Just a mark. 
+
+![Accessing Deleted by Key](Versioning3.png)![Accessing Deleted by Key+Id](Versioning4.png)
+
+Accessing a deleted object by key vs by key and ID
+
+![Permanently delete with Versioning](Versioning5.png)
+
+Permanent Delete by Name and ID
 
 ### Replication Management
 * Amazon S3 Replication enables automatic, asynchronous copying of objects across Amazon S3 buckets.
