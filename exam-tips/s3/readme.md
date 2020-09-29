@@ -134,6 +134,7 @@ Permanent Delete by Name and ID
 * Delete markers are not replicated, so you need to delete the object in destination bucket as well. 
 
 ### Limitations & Performance
+* By default, you can create up to **100 buckets** in each of your AWS accounts. You can increase your account bucket limit to a maximum of 1,000 buckets by submitting a service limit increase.
 * A single upload can be up to 5 GB. Objects higher than 100 MB it's recommended to use a Multipart upload. Multipart is required for files over 5Gb.
 * Multipart upload allow parallelize uploads, increasing efficiency.
 * In the same way, you can download in parts using S3 Byte-Range fetches. Speed-up downloads with concurrency and if a part fails, only that one needs to be re downloaded.
@@ -142,7 +143,7 @@ Permanent Delete by Name and ID
 * There is a limitation of 3,500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD requests per second per prefix in a bucket.
 * Distributing objects over different prefix will help to increase concurrency performance.
 * When KMS object encryption is in use, each upload and download count in the KMS quota. Depending the region, there is a limitation on 5000 request per second. 
-* Use S3 Transfer Acceleration tu speed up data upload/download using closer Edge locations.
+* Use S3 Transfer Acceleration to speed up data upload/download using closer Edge locations.
 
 ### Region for storage
 * S3 can be accessed globally, but you need to choose in which region do you want to store your data
