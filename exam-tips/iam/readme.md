@@ -10,4 +10,15 @@
 * You need to setup multi-factor authentication for root and admin accounts.
 * You should create password policies (content and rotation)
 
+###
+* IAM Consist of:
+  * Users
+  * Groups
+  * Policies
+  * Roles
+
+### Power Users
+* Power users are users with an Admin Role to manage all AWS resources except IAM.
+
+
 ## References and complementary readings
