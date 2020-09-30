@@ -24,7 +24,7 @@ make clean
 
 ## Labs
 * [Setup S3 & DynamoDB backend to support tfstate ](setup-s3-backend)
-* [Wordpress Instance with RDS creation from bootscript. AMI Creation](wp-instance-w-rds-lab/)
+* [Wordpress Instance with RDS creation from bootscript](wp-instance-w-rds-lab/)
 * [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
 * [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
 * [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
@@ -38,4 +38,6 @@ make clean
 * S3 bucket for backup with lifecycle and expiration
 * S3 bucket with cross-region-replication (CRR) and MFA deletion for audit records
 * S3 Access control options: ACL vs Bucket Policies vs Object ACLs vs Shared Access Links
-* Create AWS Organization OUs with consolidated billing on multiple accounts and Cross-Region Roles
+* AWS Organization OUs with consolidated billing on multiple accounts and Cross-Region Roles
+* S3 notifying via SNS a lambda function to process content 
+* Zero-Touch model using CloudCommit, Lambda triggers and Terraform Instances
