@@ -22,17 +22,21 @@ cd lab
 make clean
 ```
 
+## [Exam Tips & Theory](./exam-tips/readme.md)
+
 ## Labs
-* [Setup S3 & DynamoDB backend to support tfstate ](setup-s3-backend)
-* [Wordpress Instance with RDS creation from bootscript](wp-instance-w-rds-lab/)
-* [Elastic Load Balancer Classic and Health-Checkers](elb-classic-lab/)
-* [Elastic Load Balancer Application and Health-Checkers](elb-alb-lab/)
-* [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](auto-scaling/)
-* [KMS Key Management and use](kms-lab/)
-* [SSM Parameters used by Lambda function](ssm-params-lab/)
-* [High Availability Wordpress deployment](ha-wordpress/)
-* [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)
-* [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](s3-site-from-repo/)
+* [Setup S3 & DynamoDB backend to support tfstate ](./labs/setup-s3-backend)
+* [Wordpress Instance with RDS creation from bootscript](./labs/wp-instance-w-rds-lab/)
+* [Elastic Load Balancer Classic and Health-Checkers](./labs/elb-classic-lab/)
+* [Elastic Load Balancer Application and Health-Checkers](./labs/elb-alb-lab/)
+* [Autoscaling Groups with ELB Application and Health-Checkers and CPU target](./labs/auto-scaling/)
+* [KMS Key Management and use](./labs/kms-lab/)
+* [SSM Parameters used by Lambda function](./labs/ssm-params-lab/)
+* [High Availability Wordpress deployment](./labs/ha-wordpress/)
+* [Static Website based on S3 and Lambda functions](./labs/webpage-s3-lambda/)
+* [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](./labs/s3-site-from-repo/)
+* [Zero-Touch model using CloudCommit, Lambda triggers and Terraform Instances](./labs/zero-touch/readme.md)
+
 
 ## Wishlist Labs
 * S3 bucket for backup with lifecycle and expiration
