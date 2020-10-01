@@ -59,11 +59,19 @@ EBS Volume types:
 * **st1 - Throughput Optimized HDD**:  provide low-cost magnetic storage that defines performance in terms of ***throughput rather than IOPS***. 
 * **sc1 - Cold HDD**: provides ***low-cost magnetic storage*** that defines performance in terms of ***throughput rather than IOPS***. These volumes are ideal for large, sequential, cold-data workloads. If you require infrequent access to your data and are looking to save costs, these volumes provides inexpensive block storage. 
 
-EBS Tips:
+## EBS Tips:
 * EBS volume always share the ***same Availability Zone*** as the Instance.
 * Volumes are not encrypted by default.
 * **Root volume** is marked to be ***deleted on termination*** by default. 
 * **Additional volumes** are ***not marked to be deleted in termination***.
+* Change an EBS volume from one Availability Zone to another: 
+  1. Create an Snapshot of the EBS Volume
+  2. Convert the snapshot in an AMI
+  3. Copy the AMI to the destination region (If the target AZ is in another Region)
+  4. Deploy an instance in the destination AZ using the AMI
+* **Snapshots are stored in S3**, and they are incremental. Only the deltas are stored.
+* Is a good practice to **stop the instance before you take an snapshot**. You can do it when the instance is running but the filesystem integrity could be compromised.
+* You can **change EBS volume on the fly**, even size or storage type. The filesystem is not modified, so the partition needs to be modified manually.
 
 
 ## Security Groups Tips
