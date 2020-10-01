@@ -9,3 +9,7 @@ output "vpc_subnet_pubs" {
 output "id" {
     value = aws_vpc.vpc.id 
 }
+
+output "default_security_group_id" {
+    value = aws_vpc.vpc.default_security_group_id
+}
