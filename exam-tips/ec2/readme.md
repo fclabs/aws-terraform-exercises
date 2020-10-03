@@ -136,6 +136,9 @@ EBS Volume types:
   * ENA => 10Gb or 100Gb BW
   * EFA => High Performance Computing (HPC). Consistent latency.
 
+## Instance user_data & meta_data
+* **User-Data**: Used as boot script to configure the instance after boot. It's a good practice to avoid customized AMIs and customize them on boot. Typically used to setup ENV vars than can modify how the instance will work.
+* Meta-data: Information about your Instance available through the URL http://169.254.169.254/latest.
 
 ## Labs about
 *
