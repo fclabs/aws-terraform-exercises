@@ -39,16 +39,27 @@
   * H: up to 16 TB of HDD-based local storage, deliver high disk throughput
 
 ## Lifecycle
-An Amazon EC2 instance transitions through different states from the moment you launch it through to its termination.
-
-The following illustration represents the transitions between instance states. Notice that you can't stop and start an instance store-backed instance.
+An Amazon EC2 instance transitions through different states from the moment you launch it through to its termination. The following illustration represents the transitions between instance states. Notice that you can't stop and start an instance store-backed instance.
 
 ![Instance Lifecycle](./ec2-lifecycle.png)
 
 Rebooting an instance doesn't start a new instance billing period because the instance stays in the running state.
 Only Running state is billed, except for instances going to hibernate, were the the stopping state is also billed.
-
 **Termination Protection is off by default**. Once enabled, the Instance cannot be deleted. 
+
+## Hibernate tips
+* **Hibernation**: ***Saves RAM-to-Disk*** before stop the instance, and ***restore RAM*** immediately ***after start*** the instance back. EBS blocks persist.
+*  Instance keeps it ID, private IP addresses.
+*  **Auto-assigned public IPs are released**, except for Elastic IPs.
+*  **RAM must be less than 150GB.** Instance must be EBS backed.
+*  EBS volume must be large enough to hold instance data and RAM.
+*  **EBS volume is forced to be encrypted** for Hibernate capable machines.
+*  **Hibernate must be enabled at launch, it cannot be enabled later (running or stopped)**
+*  Not supported on Spot Instances
+*  **Machines cannot hibernate for more than 60 days.** If you need a longer period, restore it, stop it, start it and hibernate it again. 
+*  If there is critical patch that needs to be applied in an hibernated machine, you will be notified.
+
+![Hibernate](Hibernate1.png)
 
 ## Storage for Instances (EBS)
 
@@ -59,7 +70,7 @@ EBS Volume types:
 * **st1 - Throughput Optimized HDD**:  provide low-cost magnetic storage that defines performance in terms of ***throughput rather than IOPS***. 
 * **sc1 - Cold HDD**: provides ***low-cost magnetic storage*** that defines performance in terms of ***throughput rather than IOPS***. These volumes are ideal for large, sequential, cold-data workloads. If you require infrequent access to your data and are looking to save costs, these volumes provides inexpensive block storage. 
 
-## EBS Tips:
+## EBS & Instance StoreTips:
 * EBS volume always share the ***same Availability Zone*** as the Instance.
 * Volumes are not encrypted by default.
 * **Root volume** is marked to be ***deleted on termination*** by default. 
@@ -72,6 +83,37 @@ EBS Volume types:
 * **Snapshots are stored in S3**, and they are incremental. Only the deltas are stored.
 * Is a good practice to **stop the instance before you take an snapshot**. You can do it when the instance is running but the filesystem integrity could be compromised.
 * You can **change EBS volume on the fly**, even size or storage type. The filesystem is not modified, so the partition needs to be modified manually.
+* Multiple instance store can be added at launching, but not later. EBS can be added on the fly.
+* Instances store cannot be seen under the EBS Volume list. 
+* Instance store some times is called ephemeral storage, because they are destroyed when the instance is terminated.
+* **Instance store backed instances cannot be stopped**, only rebooted or terminated. 
+* Instance store disk persist along the reboot.
+* You can create an encrypted volume from scratch.
+* If you want to create an encrypted EBS from an unencrypted volume,  you need to create an snapshot (Un encrypted), copy to same region encrypted and then use the encrypted snapshot to create an AMI, and last, launch a new instance with the volume encrypted.
+* Once a volume is encrypted, all the snapshots are going to be encrypted. If you want to share the image or the snapshot, you can't do it without un encrypted.
+  
+## Spot Instances
+* A Spot Instance is an **unused EC2 instance** that is available for less than the On-Demand price. Up to 90% less.
+* Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted.
+* Spot price is how much it cost at a given moment the hour of that instance. In the moment that the spot price is lower than you limit price, the machine is provisioned and will be running as long the spot below your max price. If the price goes over, the machine will receive a notification that will be terminated. 
+* You can use **spot block to lock an spot machine so is not terminated**, even if the price goes over your spot price limit. 
+* You make a request specifying the spot price limit, how many instances you want, launch specifications and time range where the request is valid. The request could be:
+  * One-time: When the request is activated, it creates the instances and when the instances are terminated, the request is deleted.
+  * Persistent: The request persist the instances termination and when the spot price is lower your limit, the instances are created again. 
+* Spot Fleets is a combination of spot and on-demand instances created to cover a target capacity. Target is maintained if the spot instances are interrupted. Each fleets contains different pools to be filled and they are filled using different strategies:
+  * lowestPrice: The Spot Instances come from the pool with the lowest price. This is the default strategy.
+  * diversified :The Spot Instances are distributed across all pools.
+  * capacityOptimized: The Spot Instances come from the pool with optimal capacity for the number of instances that are launching.
+  * InstancePoolsToUseCount: The Spot Instances are distributed across the number of Spot pools that you specify. This parameter is valid only when used in combination with lowestPrice.
+* Spot fleets pools are defined on: Availability Zone, machine type and operating system. 
+  
+## AMI Tips
+* Are based on snapshots and must be created in each region. 
+* Can be shared between accounts.
+* AMI defines Instance configuration pre-defined configuration, like volume size or type. Some of them can be changed later. 
+* Can be backed (use storage from) by:
+  * EBS Volume created from EBS Snapshot
+  * Instance Store (volatile block storage created from S3 stored template)
 
 
 ## Security Groups Tips
@@ -82,7 +124,18 @@ EBS Volume types:
 * Security group rules are always permissive; **you can't create rules that deny access**.
 * A Security group rule can have another security rule as source (inbound rules) or destination (inbound rules). All other resources associated with that Security Group are considered valid sources/destinations.
 * Multiple instances can have the same Security Group.
-* One instance can have up to 
+
+## Network Interfaces Tips
+* There are three type of interfaces
+  * **Elastic Network Interface (ENI)**: Virtual network interface. Supports one primary private IP and multiple secondaries IPs. One Elastic IP per private. One auto assigned public IPs. One MAC address and one o multiple Security Groups.
+  * **Enhanced Networking (ENA)**: single root i/o virtualization (SR-IOV). Higher performance and lower CPU usage. Provides higher packet per seconds and bandwidth. No additional cost to use it. Suport 100Gb (prefered) and 10Gb (VF)
+  * **Elastic Fabric Adapter (EFA)**: accelerates High Performance Computing (HPC) and machine learning applications. ***EFA enables you to achieve the application performance of an on-premises HPC cluster, with the scalability, flexibility, and elasticity provided by the AWS Cloud***.
+* Elastic Network Adapters (ENAs) provide traditional IP networking features that are required to support VPC networking. ***EFAs provide all of the same traditional IP networking features as ENAs, and they also support OS-bypass capabilities***. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device.
+* How to choose the right interface type in the use cases:
+  * ENI => cheapest. Multiple homes instances.
+  * ENA => 10Gb or 100Gb BW
+  * EFA => High Performance Computing (HPC). Consistent latency.
+
 
 ## Labs about
 *
