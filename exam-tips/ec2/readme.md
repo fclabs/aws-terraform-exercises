@@ -8,11 +8,13 @@
   * Low cost and flexibility without any up-front payment or long-term commitment
   * Applications with short term execution, spiky, or unpredictable workloads that cannot be interrupted.
   * Application being tested of developed in AWS for the first time.
-* **Reserved**: provide you with a significant discount (up to 75%) compared to On-Demand instance pricing. In addition, when Reserved Instances are assigned to a specific Availability Zone, they provide a capacity reservation, giving you additional confidence in your ability to launch instances when you need them. For applications that have steady state or predictable usage, Reserved Instances can provide significant savings compared to using On-Demand instances. **Standard Reserved Instances** provide you with a significant discount (up to 72%) compared to On-Demand Instance pricing, and can be purchased for a 1-year or 3-year term. Customers have the flexibility to change the Availability Zone, the instance size, and networking type of their Standard Reserved Instances. **Purchase Convertible Reserved** Instances if you need additional flexibility, such as the ability to use different instance families, operating systems, or tenancies over the Reserved Instance term. Convertible Reserved Instances provide you with a significant discount (up to 54%) compared to On-Demand Instances and can be purchased for a 1-year or 3-year term. Reserved Instances are recommended for:
+* **Reserved**: provide you with a significant discount (up to 75%) compared to On-Demand instance pricing. In addition, when Reserved Instances are assigned to a specific Availability Zone, they provide a capacity reservation, giving you additional confidence in your ability to launch instances when you need them. For applications that have steady state or predictable usage, Reserved Instances can provide significant savings compared to using On-Demand instances. 
+  * **Standard Reserved Instances** provide you with a significant discount (up to 72%) compared to On-Demand Instance pricing, and can be purchased for a 1-year or 3-year term. Customers have the flexibility to change the Availability Zone, the instance size, and networking type of their Standard Reserved Instances. 
+  * **Purchase Convertible Reserved** Instances if you need additional flexibility, such as the ability to use different instance families, operating systems, or tenancies over the Reserved Instance term. Convertible Reserved Instances provide you with a significant discount (up to 54%) compared to On-Demand Instances and can be purchased for a 1-year or 3-year term. Reserved Instances are recommended for:
   * Applications with steady state usage
   * Applications that may require reserved capacity
   * Customers that can commit to using EC2 over a 1 or 3 year term to reduce their total computing costs
-* **Spot Instances**: Allow you to request spare Amazon EC2 computing capacity for up to 90% off the On-Demand price. Spot instances are created when AWS accept your proposed price, and terminated by AWS when the price rise over your bid. **You are charged by a full hour (round up) but if AWZ was who terminated the instance, it's rounded  down**. Spot instances are recommended for:
+* **Spot Instances**: Allow you to request spare Amazon EC2 computing capacity for up to 90% off the On-Demand price. Spot instances are created when AWS accept your proposed price, and terminated by AWS when the price rise over your bid. Spot instances are recommended for:
   * Applications that have flexible start and end times
   * Applications that are only feasible at very low compute prices
   * Users with urgent computing needs for large amounts of additional capacity
@@ -62,7 +64,6 @@ Only Running state is billed, except for instances going to hibernate, were the 
 ![Hibernate](Hibernate1.png)
 
 ## Storage for Instances (EBS)
-
 Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances. EBS volumes that are attached to an instance are exposed as storage volumes that persist independently from the life of the instance. You can create a file system on top of these volumes, or use them in any way you would use a block device (such as a hard drive). You can dynamically change the configuration of a volume attached to an instance. 
 EBS Volume types:
 * **gp2 - General Purpose SSD**: base performance of ***3 IOPS/GiB***, with the ability to ***burst to 3,000 IOPS*** for extended periods of time. These volumes are ideal for a broad range of use cases such as boot volumes, small and medium-size databases, and development and test environments. 
@@ -70,7 +71,9 @@ EBS Volume types:
 * **st1 - Throughput Optimized HDD**:  provide low-cost magnetic storage that defines performance in terms of ***throughput rather than IOPS***. 
 * **sc1 - Cold HDD**: provides ***low-cost magnetic storage*** that defines performance in terms of ***throughput rather than IOPS***. These volumes are ideal for large, sequential, cold-data workloads. If you require infrequent access to your data and are looking to save costs, these volumes provides inexpensive block storage. 
 
-## EBS & Instance StoreTips:
+**By default EBS volume is deleted when the instance is terminated.**
+
+## EBS & Instance Store Tips:
 * EBS volume always share the ***same Availability Zone*** as the Instance.
 * Volumes are not encrypted by default.
 * **Root volume** is marked to be ***deleted on termination*** by default. 
@@ -95,6 +98,7 @@ EBS Volume types:
 ## Spot Instances
 * A Spot Instance is an **unused EC2 instance** that is available for less than the On-Demand price. Up to 90% less.
 * Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted.
+* **You are charged by a full hour (round up) but if AWS was who terminated the instance, it's rounded  down**
 * Spot price is how much it cost at a given moment the hour of that instance. In the moment that the spot price is lower than you limit price, the machine is provisioned and will be running as long the spot below your max price. If the price goes over, the machine will receive a notification that will be terminated. 
 * You can use **spot block to lock an spot machine so is not terminated**, even if the price goes over your spot price limit. 
 * You make a request specifying the spot price limit, how many instances you want, launch specifications and time range where the request is valid. The request could be:
@@ -106,6 +110,7 @@ EBS Volume types:
   * capacityOptimized: The Spot Instances come from the pool with optimal capacity for the number of instances that are launching.
   * InstancePoolsToUseCount: The Spot Instances are distributed across the number of Spot pools that you specify. This parameter is valid only when used in combination with lowestPrice.
 * Spot fleets pools are defined on: Availability Zone, machine type and operating system. 
+* 
   
 ## AMI Tips
 * Are based on snapshots and must be created in each region. 
@@ -114,7 +119,6 @@ EBS Volume types:
 * Can be backed (use storage from) by:
   * EBS Volume created from EBS Snapshot
   * Instance Store (volatile block storage created from S3 stored template)
-
 
 ## Security Groups Tips
 * Security groups are stateful. Use connection tracking.
@@ -140,8 +144,7 @@ EBS Volume types:
 * **User-Data**: Used as boot script to configure the instance after boot. It's a good practice to avoid customized AMIs and customize them on boot. Typically used to setup ENV vars than can modify how the instance will work.
 * Meta-data: Information about your Instance available through the URL http://169.254.169.254/latest.
 
-## Labs about
-*
+
 
 ## References and complementary readings
 
