@@ -9,7 +9,7 @@
   * Applications with short term execution, spiky, or unpredictable workloads that cannot be interrupted.
   * Application being tested of developed in AWS for the first time.
 * **Reserved**: provide you with a significant discount (up to 75%) compared to On-Demand instance pricing. In addition, when Reserved Instances are assigned to a specific Availability Zone, they provide a capacity reservation, giving you additional confidence in your ability to launch instances when you need them. For applications that have steady state or predictable usage, Reserved Instances can provide significant savings compared to using On-Demand instances. 
-  * **Standard Reserved Instances** provide you with a significant discount (up to 72%) compared to On-Demand Instance pricing, and can be purchased for a 1-year or 3-year term. Customers have the flexibility to change the Availability Zone, the instance size, and networking type of their Standard Reserved Instances. 
+  * **Standard Reserved Instances** provide you with a significant discount (up to 72%) compared to On-Demand Instance pricing, and can be purchased for a 1-year or 3-year term. Customers have the flexibility to change the Availability Zone, the instance size, and networking type of their Standard Reserved Instances. **Region can not be changed**.
   * **Purchase Convertible Reserved** Instances if you need additional flexibility, such as the ability to use different instance families, operating systems, or tenancies over the Reserved Instance term. Convertible Reserved Instances provide you with a significant discount (up to 54%) compared to On-Demand Instances and can be purchased for a 1-year or 3-year term. Reserved Instances are recommended for:
   * Applications with steady state usage
   * Applications that may require reserved capacity
@@ -63,38 +63,6 @@ Only Running state is billed, except for instances going to hibernate, were the 
 
 ![Hibernate](Hibernate1.png)
 
-## Storage for Instances (EBS)
-Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances. EBS volumes that are attached to an instance are exposed as storage volumes that persist independently from the life of the instance. You can create a file system on top of these volumes, or use them in any way you would use a block device (such as a hard drive). You can dynamically change the configuration of a volume attached to an instance. 
-EBS Volume types:
-* **gp2 - General Purpose SSD**: base performance of ***3 IOPS/GiB***, with the ability to ***burst to 3,000 IOPS*** for extended periods of time. These volumes are ideal for a broad range of use cases such as boot volumes, small and medium-size databases, and development and test environments. 
-* **io1, io2 - Provisioned IOPS SSD**:  supports ***up to 64,000 IOPS and 1,000 MiB/s of throughput***. This allows you to predictably scale to tens of thousands of IOPS per EC2 instance. 
-* **st1 - Throughput Optimized HDD**:  provide low-cost magnetic storage that defines performance in terms of ***throughput rather than IOPS***. 
-* **sc1 - Cold HDD**: provides ***low-cost magnetic storage*** that defines performance in terms of ***throughput rather than IOPS***. These volumes are ideal for large, sequential, cold-data workloads. If you require infrequent access to your data and are looking to save costs, these volumes provides inexpensive block storage. 
-
-**By default EBS volume is deleted when the instance is terminated.**
-
-## EBS & Instance Store Tips:
-* EBS volume always share the ***same Availability Zone*** as the Instance.
-* Volumes are not encrypted by default.
-* **Root volume** is marked to be ***deleted on termination*** by default. 
-* **Additional volumes** are ***not marked to be deleted in termination***.
-* Change an EBS volume from one Availability Zone to another: 
-  1. Create an Snapshot of the EBS Volume
-  2. Convert the snapshot in an AMI
-  3. Copy the AMI to the destination region (If the target AZ is in another Region)
-  4. Deploy an instance in the destination AZ using the AMI
-* **Snapshots are stored in S3**, and they are incremental. Only the deltas are stored.
-* Is a good practice to **stop the instance before you take an snapshot**. You can do it when the instance is running but the filesystem integrity could be compromised.
-* You can **change EBS volume on the fly**, even size or storage type. The filesystem is not modified, so the partition needs to be modified manually.
-* Multiple instance store can be added at launching, but not later. EBS can be added on the fly.
-* Instances store cannot be seen under the EBS Volume list. 
-* Instance store some times is called ephemeral storage, because they are destroyed when the instance is terminated.
-* **Instance store backed instances cannot be stopped**, only rebooted or terminated. 
-* Instance store disk persist along the reboot.
-* You can create an encrypted volume from scratch.
-* If you want to create an encrypted EBS from an unencrypted volume,  you need to create an snapshot (Un encrypted), copy to same region encrypted and then use the encrypted snapshot to create an AMI, and last, launch a new instance with the volume encrypted.
-* Once a volume is encrypted, all the snapshots are going to be encrypted. If you want to share the image or the snapshot, you can't do it without un encrypted.
-  
 ## Spot Instances
 * A Spot Instance is an **unused EC2 instance** that is available for less than the On-Demand price. Up to 90% less.
 * Spot Instances are a cost-effective choice if you can be flexible about when your applications run and if your applications can be interrupted.

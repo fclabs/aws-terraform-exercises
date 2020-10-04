@@ -1,8 +1,9 @@
 # AWS Certified Architect - Associate Exam
 
 ## Concepts and Exam Tips
+* [Regions and Zones](regions/readme.md)
 * [IAM](iam/readme.md)
-* [AWS Organizations](aws-organization/readme.md) 
+* [AWS Organization](aws-organization/readme.md) 
 * [S3](s3/readme.md)
   * [Macie](./aws-macie/readme.md)
   * [Athena](./aws-athena/readme.md)
@@ -17,3 +18,4 @@
 * [CloudWatch](./cloudwatch/readme.md)
 * [CloudTrail](./cloudtrail/readme.md)
 * [WAF](./waf/readme.md)
+* [RDS](./rds/readme.md)
