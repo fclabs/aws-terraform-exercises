@@ -18,8 +18,11 @@
 * [CloudWatch](./cloudwatch/readme.md)
 * [CloudTrail](./cloudtrail/readme.md)
 * [WAF](./waf/readme.md)
+* [Cache concept](./caching/readme.md)
 * Databases
   * [RDS](./rds/readme.md)
   * [Aurora](./aurora/readme.md)
   * [DynamoDB](./dynamodb/readme.md)
   * [RedShift](./redshift/readme.md)
+  * [Elasticache](./elasticache/readme.md) 
+  * [DMS](./dms/readme.md)
