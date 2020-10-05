@@ -76,3 +76,6 @@ Automated backups occur daily during the **preferred backup window**. If the bac
 * You can have Read-Replica from Multi-AZ sources DB Instances.
 * You have Automated Backups and Database Snapshots (Manual) for RDS.
 * You can fail from one AZ to other **rebooting your primary instance**.  
+* When you **create an RDS instance**, **you can choose the Availability Zone**, or let AWS to choose one for you. 
+* There is **no charge on data transfer** for data replication in the **same region**. 
+* When **Security Group is created** for RDS, the destination **port** is set **automatically**. 
