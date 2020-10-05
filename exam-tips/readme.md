@@ -21,3 +21,4 @@
 * Databases
   * [RDS](./rds/readme.md)
   * [DynamoDB](./dynamodb/readme.md)
+  * [RedShift](./redshift/readme.md)
