@@ -20,5 +20,6 @@
 * [WAF](./waf/readme.md)
 * Databases
   * [RDS](./rds/readme.md)
+  * [Aurora](./aurora/readme.md)
   * [DynamoDB](./dynamodb/readme.md)
   * [RedShift](./redshift/readme.md)
