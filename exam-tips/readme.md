@@ -18,4 +18,6 @@
 * [CloudWatch](./cloudwatch/readme.md)
 * [CloudTrail](./cloudtrail/readme.md)
 * [WAF](./waf/readme.md)
-* [RDS](./rds/readme.md)
+* Databases
+  * [RDS](./rds/readme.md)
+  * [DynamoDB](./dynamodb/readme.md)
