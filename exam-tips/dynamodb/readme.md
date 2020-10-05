@@ -69,12 +69,12 @@ Amazon DynamoDB global tables provide a **fully managed solution for deploying a
 DynamoDB global tables are ideal for massively scaled applications with globally dispersed users. In such an environment, users expect very fast application performance. Global tables provide automatic multi-master replication to AWS Regions worldwide. They enable you to deliver low-latency data access to your users no matter where they are located.
 
 ## DynamoDB Exam Tips
-* Stored in **SSD** storage
-* Spread across 3 geographically distinct data centers
+* Stored in **SSD** storage.
+* Spread across **3 geographically** distinct data centers.
 * One second rule to choose between Eventually Consistent Read (default) or Strongly Consistent Read.
-* DAX reduce access time to from milliseconds to microseconds
+* DAX reduce access time to from milliseconds to microseconds.
 * In streams, shards are stored for 24 hours.
 * Use **Global Tables for Disaster Recovery or HA**.
-* DynamoDB encrypt at read using KMS
+* DynamoDB encrypt at read using KMS.
 * You can use IAM to limit access to only some attributes in am item.
 * DynamoDB **doesn't support resource-based policies**.

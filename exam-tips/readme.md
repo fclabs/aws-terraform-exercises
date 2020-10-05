@@ -20,9 +20,10 @@
 * [WAF](./waf/readme.md)
 * [Cache concept](./caching/readme.md)
 * Databases
-  * [RDS](./rds/readme.md)
+  * [RDS (OLTP)](./rds/readme.md)
   * [Aurora](./aurora/readme.md)
   * [DynamoDB](./dynamodb/readme.md)
   * [RedShift](./redshift/readme.md)
   * [Elasticache](./elasticache/readme.md) 
   * [DMS](./dms/readme.md)
+  * [Elastic Map Reduce](./emr/readme.md)

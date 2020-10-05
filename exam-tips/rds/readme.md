@@ -66,12 +66,13 @@ Automated backups occur daily during the **preferred backup window**. If the bac
 **Restore** a backup will create a **new DB instance** and will have a **new endpoint DNS record**.
 
 ## RDS Exam Tips
-* **RDS runs on virtual machines**. Except Aurora Serverless **is not serverless**
-* You cannot log in the OS. Is a managed service.
-* Amazon is responsible for administration and patching at OS and DB engine level.
-* **Multi-AZ is for Disaster Recovery only**. Not improve performance. 
-* **Read-Replica improves performance for read-heavy applications**. Does not provides disaster recovery.
+* **RDS runs on virtual machines**. Except for Aurora Server-less, **RDS is not serverless**
+* You cannot log in the OS. It is a managed service.
+* **Amazon** is responsible for **administration and patching** at OS and DB engine level.
+* **Multi-AZ is for Disaster Recovery only**. It does not improve performance. 
+* **Read-Replica improves performance for read-heavy applications**. It does not provides disaster recovery.
 * **Read-Replicas needs automatic backup** enabled.
+* If you **promote a Read-Replica** as master, it will **break the replication**.
 * You can have Read-Replica from Multi-AZ sources DB Instances.
 * You have Automated Backups and Database Snapshots (Manual) for RDS.
 * You can fail from one AZ to other **rebooting your primary instance**.  

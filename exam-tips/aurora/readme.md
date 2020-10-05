@@ -9,12 +9,14 @@ Is an on-demand, autoscaling configuration for the MySQL-compatible and PostgreS
 
 Provides a relative simple, cost-effective option for infrequent, intermittent, or unpredictable workloads.
 
-
+## Exam Tips
 * **Storage Autoscaling** - Aurora scales up from 10GB in 10GB increments up to 64TB
 * **Computer autoscaling** - Can scale up to 32vCPU and 244GB of memory.
-* **Data replication** - 2 copies of your data is contained in each availability zone, with a minimum of three AZ. 6 copies of you data. 
-* **Read Replicas** - Aurora can have up to 15 read replicas without impact performance.
+* **Data replication** - 2 copies of your data is contained in each availability zone, with a minimum of three AZ. **6 copies of you data.** 
+* **Read Replicas** - Aurora can three different types of replicas:
+  * Aurora Replicas, can have up to 15 read replicas without impact performance.
+  * MySQL replicas, can have up to 3 replicas.
+  * PostgreSQL replica, can have only 1 replica.
 * Automatic Fail over without data loss.
 * **Automatic Backup without impact on performance**. 
-* Support Snapshots that you can share with other accounts.
-
+* Support that you can **share with other accounts**.

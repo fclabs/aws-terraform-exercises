@@ -17,7 +17,8 @@ Persistence | No | Yes
 Multi-AZ | No | Yes
 Backup & Restore Capabilities | No | Yes
 
-## Exam tips
-* Elasticache is used to increase DB and Web application performance
-* Redis is Multi-AZ
-* Redis supports Backup & Restore
+## Exam tips
+* **Elasticache** is used to **increase DB and Web application performance**
+* **Redis** is **Multi-AZ**
+* **Redis** supports **Backup & Restore**
+* If you need **horizontally scaling**, use **Memcache**.

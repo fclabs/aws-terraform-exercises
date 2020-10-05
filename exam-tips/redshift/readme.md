@@ -22,7 +22,8 @@ Is charged by Compute Node Hours, how many hours per computing node. Not charge 
 S3 price for backups.
 
 ## Exam Tips
-* RedShift is used for business intelligence
+* **RedShift** is used for **business intelligence**.
 * Backup defaults is 1 days, max 35 days.
+* Available in **one Availability Zone**.
 * RedShift always tries to maintain at least three copies of your data. The original, the replica on the compute nodes and the backup in S3.
 * You can asynchronously replicate you snapshots to other regions for disaster recovery.
