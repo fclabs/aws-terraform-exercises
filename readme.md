@@ -35,13 +35,14 @@ make clean
 * [High Availability Wordpress deployment](./labs/ha-wordpress/)
 * [Static Website based on S3 and Lambda functions](./labs/webpage-s3-lambda/)
 * [Static Website based on S3 sourcing from a CodeCommit Repository using Lambda](./labs/s3-site-from-repo/)
-* [Zero-Touch model using CloudCommit, Lambda triggers and Terraform Instances](./labs/zero-touch/readme.md)
+
 
 
 ## Wishlist Labs
+* Move Instance between regions
 * S3 bucket for backup with lifecycle and expiration
 * S3 bucket with cross-region-replication (CRR) and MFA deletion for audit records
 * S3 Access control options: ACL vs Bucket Policies vs Object ACLs vs Shared Access Links
 * AWS Organization OUs with consolidated billing on multiple accounts and Cross-Region Roles
 * S3 notifying via SNS a lambda function to process content 
-* Zero-Touch model using CloudCommit, Lambda triggers and Terraform Instances
+* Deploy ECS with Grafana to monitor CloudWatch

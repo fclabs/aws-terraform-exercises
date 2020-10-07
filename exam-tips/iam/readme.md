@@ -25,4 +25,19 @@
 * Can be attached on-demand while the instance is running using the console or the API/CLI
 * As everything in IAM, they are universal. 
 
-## References and complementary readings
+## ARN
+Amazon Resource Names (**ARNs**) **uniquely identify AWS resources**. We require an ARN when you need to specify a resource unambiguously across all of AWS, such as in IAM policies, Amazon Relational Database Service (Amazon RDS) tags, and API calls.
+
+```
+arn:partition:service:region:account-id:resource-id
+arn:partition:service:region:account-id:resource-type/resource-id
+arn:partition:service:region:account-id:resource-type:resource-id
+```
+
+## IAM Policies
+A policy is an object in AWS that, when associated with an identity or resource, defines their permissions. When you create a permissions policy to restrict access to a resource, you can choose an identity-based policy or a resource-based policy.
+* **Identity-based policies** are attached to an **IAM user, group, or role**. These policies let you specify what that identity can do (its permissions). Identity-based policies can be managed or inline.
+* **Resource-based policies** are attached to a resource. For example, Amazon S3 buckets, Amazon SQS queues, and AWS Key Management Service encryption keys. **Allow you to define who can access and what actions they can perform**.
+
+### Policy JSON Document
+  
