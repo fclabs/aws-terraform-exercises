@@ -41,3 +41,21 @@ A policy is an object in AWS that, when associated with an identity or resource,
 
 ### Policy JSON Document
   
+* Al JSON policies have a **Version**. **2010-10-17** is the last one.
+* Each content will have one or more **Statements**
+* Each Statement match a API Request and define:
+  * **Effect**: **Allow** / **Deny**
+  * **Actions**: in the form **ServiceName**:**ActionName**. Can support wild cards.
+  * **Resource**: Which is the **resource** associates with this actions. 
+  * **Principals**: Who is the entity that can **make the actions**.
+  * **Conditions**: Conditions evaluated on the request to access the resource. Usually are base on request content (API call arguments).
+* Any permission that **is not explicit Allow, is Denied**. 
+* Always a Deny **Effect** will have **precedence** over an **Allow**.
+* AWS **joins** all the policies associated with a Principal to evaluate the access.
+* There are AWS-Managed policies and Customer-Managed policies.
+
+## Permissions Boundaries
+
+Is used to limit the **maximum permission** of a user/role and prevent privilege escalation or unnecessarily broad permissions. It is an additional constrain over the IAM policy.
+
+The effective access will be defined for the common permissions between the boundary and the policy.

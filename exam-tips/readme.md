@@ -2,22 +2,27 @@
 
 ## Concepts and Exam Tips
 * [Regions and Zones](regions/readme.md)
-* [IAM](iam/readme.md)
-* [AWS Organization](aws-organization/readme.md) 
-* [AWS Directory Service](./directory-service/readme.md)
-* [S3](s3/readme.md)
-  * [Macie](./aws-macie/readme.md)
-  * [Athena](./aws-athena/readme.md)
+* Security
+  * [IAM](iam/readme.md)
+  * [AWS Organization](aws-organization/readme.md) 
+  * [AWS Directory Service](./directory-service/readme.md)
+  * [Resource Access Management](./ram/readme.md)
+  * [CloudTrail](./cloudtrail/readme.md)
+Management
+  * [CloudWatch](./cloudwatch/readme.md)
+
 * [EC2](ec2/readme.md)
   * [EBS](./ebs/readme.md)
   * [HPC in AWS](./hpc-in-aws/readme.md)
   * [Placement Groups](./placement-group/readme.md)
-* [EFS](efs/readme.md)
-* [FSx](fsx/readme.md)
-* [Storage Gateway](storage-gateway/readme.md)
+* Storage
+  * [S3](s3/readme.md)
+    * [Macie](./aws-macie/readme.md)
+    * [Athena](./aws-athena/readme.md)
+  * [EFS](efs/readme.md)
+  * [FSx](fsx/readme.md)
+  * [Storage Gateway](storage-gateway/readme.md)
 * [CloudFront](cloud-front/readme.md)
-* [CloudWatch](./cloudwatch/readme.md)
-* [CloudTrail](./cloudtrail/readme.md)
 * [WAF](./waf/readme.md)
 * [Cache concept](./caching/readme.md)
 * Databases
@@ -28,3 +33,5 @@
   * [ElastiCache](./elasticache/readme.md) 
   * [DMS](./dms/readme.md)
   * [Elastic Map Reduce](./emr/readme.md)
+* [Route53](./route53/readme.md)
+  * [DNS Concepts](./dns/readme.md)

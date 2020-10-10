@@ -35,7 +35,7 @@ Responsibilities
 * Large <= 5000 users
 * Easier to Manage EC2
 * Linux workloads that need LDAP
-* Can't support Trust relations
+* **Can't support Trust relations**
 
 ## AD Connectors
 * Directory Gateway for  on-premise AD
