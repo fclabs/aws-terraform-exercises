@@ -9,6 +9,8 @@ Each Amazon EC2 Region is designed to be isolated from the other Amazon EC2 Regi
 
 Each Region has multiple, isolated locations known as Availability Zones. When you launch an instance, you can select an Availability Zone or let us choose one for you. If you distribute your instances across multiple Availability Zones and one instance fails, you can design your application so that an instance in another Availability Zone can handle requests.
 
+The **name of the AZ** (us-east-1) is mapped to a different Geographically AZ per account (use1-az1).
+
 ![AZ](aws-az.png)
 
 **You can view AZ IDs to determine the location of resources in one account relative to the resources in another account**. For example, if you share a subnet in the Availability Zone with the AZ ID use-az2 with another account, this subnet is available to that account in the Availability Zone whose AZ ID is also use-az2. The AZ ID for each VPC and subnet is displayed in the Amazon VPC console.
