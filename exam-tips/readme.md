@@ -22,7 +22,9 @@ Management
   * [EFS](efs/readme.md)
   * [FSx](fsx/readme.md)
   * [Storage Gateway](storage-gateway/readme.md)
-* [CloudFront](cloud-front/readme.md)
+* Networking
+  * [VPC](./vpc/readme.md)
+  * [CloudFront](cloud-front/readme.md)
 * [WAF](./waf/readme.md)
 * [Cache concept](./caching/readme.md)
 * Databases
