@@ -25,6 +25,7 @@ Management
 * Networking
   * [VPC](./vpc/readme.md)
   * [CloudFront](cloud-front/readme.md)
+  * [Global Accelerators](./global-accelerators/readme.md)
 * [WAF](./waf/readme.md)
 * [Cache concept](./caching/readme.md)
 * Databases
