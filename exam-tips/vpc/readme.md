@@ -62,13 +62,40 @@ AWS Direct Connect links your internal network to an AWS Direct Connect location
 
 ![DirectConnect](./direct_connect_overview.png)
 
+## VPC Endpoints
+A VPC endpoint enables you to privately **connect your VPC to supported AWS services and VPC endpoint services powered by AWS PrivateLink** without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. **Instances in your VPC do not require public IP addresses to communicate with resources in the service**. Traffic between your VPC and the other service does not leave the Amazon network.
+
+**Endpoints are virtual devices**. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between instances in your VPC and services without imposing availability risks or bandwidth constraints on your network traffic.
+
+Concepts on VPC endpoints:
+* **Endpoint service** — Your **own application in your VPC**. Other AWS principals can create a connection from their VPC to your endpoint service
+* **Gateway endpoint** — A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service. Target is defined using an **AWS managed IP prefix-list**.
+* **Interface endpoint** — An interface endpoint is an **elastic network interface** with a **private IP address** from the IP address range of your subnet that serves as an **entry point for traffic** destined to a supported service.
+
+![Interface Endpoint](./vpc-endpoint-kinesis-diagram.png)
+Example of interface Endpoint for Kinesis service
+
+![Gateway Endpoint](./vpc-endpoint-s3-diagram.png)
+Example Gateway Endpoint for S3 service
+
+## Transit Gateways
+A transit gateway enables you to attach VPCs and VPN connections in the same Region and route traffic between them. A transit gateway works across AWS accounts, and you can use AWS Resource Access Manager to share your transit gateway with other accounts. After you share a transit gateway with another AWS account, the account owner can attach their VPCs to your transit gateway. A user from either account can delete the attachment at any time.
+
+A transit gateway acts as a **Regional virtual router for traffic flowing between your virtual private clouds (VPC) and VPN connections**. A transit gateway scales elastically based on the volume of network traffic. **Routing through a transit gateway operates at layer 3**, where the packets are sent to a specific next-hop attachment, based on their destination IP addresses. Work in hub-and-spoke model.
+A transit gateway attachment is both a source and a destination of packets. You can attach the following resources to your transit gateway:
+* One or more VPCs
+* One or more VPN connections
+* One or more AWS Direct Connect gateways
+* One or more transit gateway peering connections
+
+![Transit-Gateway](./transit-gateway.png) 
 
 ## Exam Tips
 ### VPCs
 * VPC is like your logical datacenter in AWS
 * One VPC will include:
-  * One Internet Gateway or Virtual Private Gateway (optional)
-  * One or more subnet
+  * None or One Internet Gateway or Virtual Private Gateway (optional)
+  * One or more subnet (**One subnet, one Availability Zone**)
   * One or more routing table **(one default created automatically)**
   * One or more network access list **(one default created automatically)**
   * One or more Security Groups **(one default created automatically)**
@@ -97,11 +124,13 @@ AWS Direct Connect links your internal network to an AWS Direct Connect location
 
 ### Network ACL/Security Groups
 * **Default Network ACL and Security Group** are **automatically created** with a new VPC.
-* **Network ACL by default enables all** inbound and outbound traffic until you add a rule.
+* **Custom Network ACL by default denied all** inbound and outbound traffic until you add a rule.
+* **Default Network ACL** that is created with the VPC **allows by default all the traffic**.
 * **All the subnets have a Network ACL associated**. If you not specify one, the default NACL is used.
 * **Security Groups cannot block** IP address. **Network ACL can block** specific traffic using IP or port. 
 * A **Network ACL can be associated with multiple subnets**, but a **subnet** can have only **one Network ACL**. 
-* Network ACL are stateless. You need to enable rules for the incoming and returning traffic.
+* **Network ACL are stateless**. You need to enable rules for the incoming and returning traffic. **Secure Groups are stateful**.
+* **Security Groups cannot span across your VPC**.  
 
 ### Flow logs
 * Flow logs can be tagged. 
@@ -125,3 +154,32 @@ AWS Direct Connect links your internal network to an AWS Direct Connect location
   5. Select VPN Connection and create new VPN connection
   6. Select the Virtual Private Gateway and the Customer Gateway
   7. Once the VPN is available, setup the VPN on the customer Gateway. 
+
+### VPC Endpoint
+* Endpoint Interface attach an ENI to the VPC as entry point to reach a service.
+* Endpoint Gateways add an AWS Managed IP Prefix-list and gateways to the route table as a next-hop to reach a service.
+* VPC Endpoints are virtual, high reliable services.
+
+### Private Links
+* Is the best way to share VPCs between multiples VPCs.
+* Does not require VPC peering
+* Requires a Network Load Balancer in the service VPC and an ENI on the customer VPC.
+
+### Transit Gateway
+* **Simplify inter-connections between VPC, VPNs, direct connect gateways or different regions.**
+* It support **IP Multicast**
+* Works in **hub-and-spoke** model
+* You can use it with Resource Access Manager (RAM)
+* You can use route tables to limit how VPCs talks to each other.
+
+### VPN Cloud Hub
+* If you have multiple VPN connections, you can use **VPN Cloud Hub** to **connect those sites** together.
+* Use **Hub-and-spoke model**
+* Low cost and easy to manage.
+* All the **traffic is encrypted**.
+
+### VPC Network Costs
+* Traffic going in to your VPC is free.
+* VPC Traffic between resources in the same availability zone are free
+* VPC Traffic between resources in the same region but different Availability Zone has a low cost.
+* Traffic that requires leave the VPC or the region has a high cost.
