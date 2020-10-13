@@ -90,6 +90,15 @@ A transit gateway attachment is both a source and a destination of packets. You 
 
 ![Transit-Gateway](./transit-gateway.png) 
 
+## Egress-only gateways
+An egress-only internet gateway is a horizontally scaled, redundant, and highly available VPC component that **allows outbound communication over IPv6 from instances in your VPC to the internet, and prevents the internet from initiating an IPv6 connection with your instances.**
+
+An egress-only internet gateway **is stateful**: it forwards traffic from the instances in the subnet to the internet or other AWS services, and then sends the response back to the instances. An egress-only internet gateway has the following characteristics:
+* You **cannot associate a security group** with an egress-only internet gateway. You can use security groups for your instances in the private subnet to control the traffic to and from those instances.
+* You **can use a network ACL to control the traffic to and from the subnet** for which the egress-only internet gateway routes traffic.
+
+![Egress](./egress-only-igw-diagram.png)
+
 ## Exam Tips
 ### VPCs
 * VPC is like your logical datacenter in AWS
@@ -144,7 +153,7 @@ A transit gateway attachment is both a source and a destination of packets. You 
   * Traffic to the default VPC **router**.
 
 ### Direct Connect
-* **Connects directly your datacenter to an AWS region.**
+* **Connects directly your datacenter to an AWS region**. Faster performance than over Internet.
 * Useful for **high throughput** workloads or if you need a **stable and reliable secure** connection.
 * Steps to setup **Direct Connect**:
   1. Create Virtual interface in the Direct Connect console. This is a PUBLIC virtual address.
