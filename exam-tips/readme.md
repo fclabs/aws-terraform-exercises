@@ -15,6 +15,7 @@ Management
   * [EBS](./ebs/readme.md)
   * [HPC in AWS](./hpc-in-aws/readme.md)
   * [Placement Groups](./placement-group/readme.md)
+  * [Elastic Load Balancer](./elb/readme.md)
 * Storage
   * [S3](s3/readme.md)
     * [Macie](./aws-macie/readme.md)
