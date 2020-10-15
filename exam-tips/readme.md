@@ -17,6 +17,7 @@ Management
   * [Placement Groups](./placement-group/readme.md)
   * [Elastic Load Balancer](./elb/readme.md)
   * [Autoscaling](./autoscaling/readme.md)
+  * [ElasticBeanstalk](./elasticbeanstalk/readme.md)
 * Storage
   * [S3](s3/readme.md)
     * [Macie](./aws-macie/readme.md)
@@ -40,3 +41,4 @@ Management
   * [Elastic Map Reduce](./emr/readme.md)
 * [Route53](./route53/readme.md)
   * [DNS Concepts](./dns/readme.md)
+* [On-Premise Services](./on-prem/readme.md)
