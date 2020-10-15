@@ -34,10 +34,17 @@ For UDP traffic, the load balancer **selects a target using a flow hash algorith
 Classic Load Balancer provides basic load balancing across multiple Amazon EC2 instances and operates at both the request level and connection level. Classic Load Balancer is intended for applications that were built within the EC2-Classic network. We recommend Application Load Balancer for Layer 7 and Network Load Balancer for Layer 4 when using Virtual Private Cloud (VPC).
 
 
-
 ### Cross-zone load balancing
 The nodes for your load balancer distribute requests from clients to registered targets. When **cross-zone load balancing is enabled**, each load balancer node distributes traffic across the registered **targets in all enabled Availability Zones**. When **cross-zone load balancing is disabled**, each load balancer node **distributes traffic only across the registered targets in its Availability Zone**.
 
+
+### Sessions Affinity or Sticky Sessions
+**By default, a Classic Load Balancer** routes each request independently to the registered instance with the **smallest load**. However, you can use the **sticky session feature ** (also known as session affinity), which enables the load balancer to **bind a user's session to a specific instance**. This ensures that all requests from the user during the session are sent to the same instance.
+
+### Path Patterns
+The rules that you define for your **listener** determine how the load balancer **routes requests** to the targets in one or more target groups.
+
+Each rule consists of a priority, one or more actions, and one or more **conditions**.
 
 ## Exam Tips
 * Application Load Balancers, for L7 decisions. Act like a reverse proxy. Recommended for any VPC application.
@@ -53,3 +60,6 @@ The nodes for your load balancer distribute requests from clients to registered 
 * ELB Classic can **only load balance on the following ports**: 25, 80, 443, 465, 587, 1024-65535
 *  You are not charged for **regional data transfer between Availability Zones** when you **enable cross-zone load balancing for your Classic Load Balancer or Application Load Balancers**.
 *  You **will be charged for regional data transfer** between Availability Zones with **Network Load Balancer** when cross-zone load balancing is enabled.
+*  **Sticky Sessions** enables users to stick to the **same EC2** instances.
+*  **Path Patterns** is conditional **routing** to different **target groups** based on the HTTP/S **request parameters**.
+  
