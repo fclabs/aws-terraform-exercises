@@ -29,6 +29,8 @@ Management
   * [VPC](./vpc/readme.md)
   * [CloudFront](cloud-front/readme.md)
   * [Global Accelerators](./global-accelerators/readme.md)
+* [Route53](./route53/readme.md)
+  * [DNS Concepts](./dns/readme.md)
 * [WAF](./waf/readme.md)
 * [Cache concept](./caching/readme.md)
 * Databases
@@ -39,6 +41,7 @@ Management
   * [ElastiCache](./elasticache/readme.md) 
   * [DMS](./dms/readme.md)
   * [Elastic Map Reduce](./emr/readme.md)
-* [Route53](./route53/readme.md)
-  * [DNS Concepts](./dns/readme.md)
+* Applications
+  * [SQS](./sqs/readme.md)
 * [On-Premise Services](./on-prem/readme.md)
+  
