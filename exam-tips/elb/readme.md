@@ -47,10 +47,10 @@ The rules that you define for your **listener** determine how the load balancer 
 Each rule consists of a priority, one or more actions, and one or more **conditions**.
 
 ## Exam Tips
-* Application Load Balancers, for L7 decisions. Act like a reverse proxy. Recommended for any VPC application.
-* Network Load Balancers for TPC/UDP traffic, supports millions of connections and low latency. Recommended for TCP/UDP traffic, non HTTP.
-* Classic Load Balance, Recommended for EC2-Classic instances.
-* Error 504 means the gateway has timed out. Application is not responding.
+* **Application Load Balancers**, for **L7 decisions**. Act like a reverse proxy. Recommended for any VPC application.
+* **Network Load Balancers** for **TPC/UDP traffic**, supports millions of connections and low latency. Recommended for TCP/UDP traffic, non HTTP.
+* **Classic Load Balance**, Recommended for **EC2-Classic** instances.
+* **Error 504** means the gateway has timed out. A**pplication is not responding**.
 * HTTP Load Balancers use **X-Forwarded-For** to register the original IP address of the request to the load balancer.
 * You **never get an IP address** for an Application Load Balancer. Always a domain name.
 * When you register EC2 instances as targets, you must ensure that the **security groups** for these instances allow traffic on both the **listener port and the health check port**.
@@ -59,7 +59,8 @@ Each rule consists of a priority, one or more actions, and one or more **conditi
 * **Cross-zone load balancing** is already **enabled by default** in Application Load Balancer.
 * ELB Classic can **only load balance on the following ports**: 25, 80, 443, 465, 587, 1024-65535
 *  You are not charged for **regional data transfer between Availability Zones** when you **enable cross-zone load balancing for your Classic Load Balancer or Application Load Balancers**.
-*  You **will be charged for regional data transfer** between Availability Zones with **Network Load Balancer** when cross-zone load balancing is enabled.
-*  **Sticky Sessions** enables users to stick to the **same EC2** instances.
-*  **Path Patterns** is conditional **routing** to different **target groups** based on the HTTP/S **request parameters**.
+* You **will be charged for regional data transfer** between Availability Zones with **Network Load Balancer** when cross-zone load balancing is enabled.
+* **Sticky Sessions** enables users to stick to the **same EC2** instances.
+* **Path Patterns** is conditional **routing** to different **target groups** based on the HTTP/S **request parameters**.
+* **ELB only balance between Availability Zones**. They cannot balance between regions.
   

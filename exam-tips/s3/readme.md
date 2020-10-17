@@ -32,6 +32,7 @@
 * Glacier Deep Archive
 * Reduced Redundancy Storage (RRS): Being faced out similar to One-Zone IA.
 * S3 Standard is the most expensive. S3 Intelligence Tiering cost the same, but infrequently used objects are moved automatically to S3-IA, which is cheaper. The analysis of the objects cost, so if you have millions of objects it could be expensive.
+* One Zone IA could have a cheaper cost per GB, but if it many accesses, it would become more expensive than Standard-IA
 * __S3 IA, OZ-IA & Intel Tiering only apply to objects larger than 128KB, stored for a minimum of 30-day term. Smaller object are charges as S3 Standard. Shorter period of time are charged for the 30 days.__
 
 ![S3 Storage Classes](S3-Storage-Classes.png)
