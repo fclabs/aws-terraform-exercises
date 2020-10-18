@@ -43,5 +43,7 @@ Management
   * [Elastic Map Reduce](./emr/readme.md)
 * Applications
   * [SQS](./sqs/readme.md)
+  * [SWF](./swf/readme.md)
+  * [SNS](./sns/readme.md)
 * [On-Premise Services](./on-prem/readme.md)
   
