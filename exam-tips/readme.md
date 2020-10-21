@@ -46,5 +46,6 @@ Management
   * [SWF](./swf/readme.md)
   * [SNS](./sns/readme.md)
   * [API Gateway](./api-gateway/readme.md)
+  * [Kinesis](./kinesis/readme.md)
 * [On-Premise Services](./on-prem/readme.md)
   
