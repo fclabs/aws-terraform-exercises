@@ -42,6 +42,7 @@ Management
   * [DMS](./dms/readme.md)
   * [Elastic Map Reduce](./emr/readme.md)
 * Applications
+  * [Event Processing Patterns](./event-patterns/readme.md)
   * [SQS](./sqs/readme.md)
   * [SWF](./swf/readme.md)
   * [SNS](./sns/readme.md)

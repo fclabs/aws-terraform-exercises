@@ -37,5 +37,5 @@ Amazon Cognito Sync is an AWS service and client library that enables **cross-de
     2. If the authentication was **successful**, it receives an **authentication token**
     3. **Authentication token** is exchanges with **AWS credentials** that allows the user to **assume an IAM role**.
 * **Cognito** is an Identity Broker which handles interaction between your applications and the Web ID provider.
-* User pools is user based. Handles thinks like registration, authentication, and account recovery.
-* Identity pools - authorize access to your AWS resources.
+* **User pools** is user based. Handles thinks like registration, authentication, and account recovery.
+* **Identity pools** - authorize access to your AWS resources.
