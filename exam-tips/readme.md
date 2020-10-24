@@ -8,9 +8,10 @@
   * [AWS Directory Service](./directory-service/readme.md)
   * [Resource Access Management](./ram/readme.md)
   * [CloudTrail](./cloudtrail/readme.md)
+  * [KMS](./kms/readme.md)
+  * [CloudHSM](./cloud-hsm/readme.md)
 Management
   * [CloudWatch](./cloudwatch/readme.md)
-
 * [EC2](ec2/readme.md)
   * [EBS](./ebs/readme.md)
   * [HPC in AWS](./hpc-in-aws/readme.md)
