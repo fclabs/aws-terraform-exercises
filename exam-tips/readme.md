@@ -10,8 +10,11 @@
   * [CloudTrail](./cloudtrail/readme.md)
   * [KMS](./kms/readme.md)
   * [CloudHSM](./cloud-hsm/readme.md)
+  * [Secrets Manager](./secret-manager/readme.md)
+  * [AWS Shield](./aws-shield/readme.md)
 Management
   * [CloudWatch](./cloudwatch/readme.md)
+  * [SSM Parameter Store](./ssm-param/readme.md)
 * [EC2](ec2/readme.md)
   * [EBS](./ebs/readme.md)
   * [HPC in AWS](./hpc-in-aws/readme.md)
