@@ -52,5 +52,6 @@ Management
   * [SNS](./sns/readme.md)
   * [API Gateway](./api-gateway/readme.md)
   * [Kinesis](./kinesis/readme.md)
+  * [Lambda]()
 * [On-Premise Services](./on-prem/readme.md)
   
