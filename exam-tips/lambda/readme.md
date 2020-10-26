@@ -50,4 +50,11 @@ You can use AWS X-Ray to visualize the components of your application, identify 
   * Kinesis Firehose, to process data records and get additional information
   * Kinesis Streams, to process data records
   * SES, that can invoke lambda when a mail is received
+* **Lambda scale out (not up)**. each request is a new lambda instance. The same lambda instance **will never** process multiple calls.
+* Lambda will best works with **API Gateway and DynamoDB** to run full serverless. 
+* Lambda can run globally. 
+* Lambda **synchronously** (waits for the call to finish) trigger:
+  * ALB, Cognito, Lex, Alexa, API Gateway, CloudFront & Kinesis Firehose.
+* Lambda **asynchronously** (don't wait for the call to finish) trigger:
+  * S3, SNS, SQS, CloudWatch, CodeCommit, SES
   
