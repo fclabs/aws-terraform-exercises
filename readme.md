@@ -46,3 +46,4 @@ make clean
 * AWS Organization OUs with consolidated billing on multiple accounts and Cross-Region Roles
 * S3 notifying via SNS a lambda function to process content 
 * Deploy ECS with Grafana to monitor CloudWatch
+* Deploy a ECR registry, Create an container image and run it from the ECR using ECS Fargate.
