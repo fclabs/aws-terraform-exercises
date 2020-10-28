@@ -121,6 +121,17 @@ An egress-only internet gateway **is stateful**: it forwards traffic from the in
 ### VPC Peering
 * **Connects VPCs** from the **same or different accounts**, in **same or different region**. 
 * **Does not support transitive peering** aka routing traffic between two VPC (A, B) going through a common VPC peer (C). ```A <-> C <-> B```
+* If you have an **Internet Gateway** in VPC1 and a **peering** with VPC2, **you cannot access Internet** from VPC2 using VPC1.
+* If you have a **Direct-Connect connection with VPC1** and a **peering** with VPC2, **you CAN access the on-site addresses from VPC2**.
+
+![DirectConnect](./peering-intro-diagram.png)
+
+**Invalid configuration** for VPC peering:
+* Overlapping CIDR blocks
+* Transitive Peering
+* Edge to edge routing through an internet gateway
+* Edge to edge routing through a VPN connection or an AWS Direct Connect connection
+* Edge to edge routing through a VPC gateway endpoint
 
 ### NAT Instances/gateways
 * When creating a **NAT Instance**, remember to **disable the Source/Destination Check**.

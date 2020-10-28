@@ -112,7 +112,31 @@ Only Running state is billed, except for instances going to hibernate, were the 
 * **User-Data**: Used as boot script to configure the instance after boot. It's a good practice to avoid customized AMIs and customize them on boot. Typically used to setup ENV vars than can modify how the instance will work.
 * Meta-data: Information about your Instance available through the URL http://169.254.169.254/latest.
 
+## Windows instances
+* Windows instances are **charged by a full hour**, even partial hour.
 
+## CloudWatch Monitoring
 
-## References and complementary readings
+By default, your instance is enabled for basic monitoring. You can optionally enable detailed monitoring. After you enable detailed monitoring, the Amazon EC2 console displays monitoring graphs with a 1-minute period for the instance. The following describes the data interval and charge for basic and detailed monitoring for instances.
+* **Basic monitoring** - Data is available automatically in 5-minute periods at no charge.
+* **Detailed monitoring** - Data is available in 1-minute periods for an additional charge. To get this level of data, you must specifically enable it for the instance. For the instances where you've enabled detailed monitoring, you can also get aggregated data across groups of similar instances.
 
+You can monitor:
+* CPU utilization
+* Status check failed (any)
+* Status check failed (instance) - Check instance responsiveness using ARP requests
+* Status check failed (system) - Monitor the system where the instance runs
+* Network in (bytes)
+* Network out (bytes)
+* Network in (packets)
+* Network out (packets)
+* Disk reads (bytes)
+* Disk writes (bytes)
+* Disk reads (operations)
+* Disk writes (operation)
+* CPU credit usage - One CPU Credit equals one vCPU at 100% usage/minute. 5 minute value.
+* CPU credit balance
+
+## Burstable performance instances
+
+Burstable performance instances are designed to provide a **baseline level of CPU performance** with the ability to **burst to a higher level when required by your workload**. Burstable performance instances are well suited for a wide range of general-purpose applications. Examples include microservices, low-latency interactive applications, small and medium databases, virtual desktops, development, build, and stage environments, code repositories, and product prototypes.

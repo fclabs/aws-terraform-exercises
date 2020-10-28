@@ -52,7 +52,7 @@ DAX is a DynamoDB-compatible caching service that enables you to benefit from **
 ## DynamoDB transactions
 Amazon DynamoDB transactions simplify the developer experience of making coordinated, all-or-nothing changes to multiple items both within and across tables. Transactions provide atomicity, consistency, isolation, and durability (ACID) in DynamoDB, helping you to maintain data correctness in your applications.
 
-You can use the DynamoDB transactional read and write APIs to manage complex business workflows that require adding, updating, or deleting multiple items as a single, all-or-nothing operation. For example, a video game developer can ensure that players’ profiles are updated correctly when they exchange items in a game or make in-game purchases.
+**You can use the DynamoDB transactional read and write APIs to manage complex business workflows that require adding, updating, or deleting multiple items as a single, all-or-nothing operation.** For example, a video game developer can ensure that players’ profiles are updated correctly when they exchange items in a game or make in-game purchases.
 
 ## DynamoDB Streams
 A DynamoDB stream is an **ordered flow of information about changes to items** in a DynamoDB table. When you enable a stream on a table, DynamoDB captures information about every modification to data items in the table. DynamoDB Streams writes stream records in near-real time so that you can build applications that consume these streams and take action based on the contents.
@@ -78,3 +78,5 @@ DynamoDB global tables are ideal for massively scaled applications with globally
 * DynamoDB encrypt at read using KMS.
 * You can use IAM to limit access to only some attributes in am item.
 * DynamoDB **doesn't support resource-based policies**.
+* **DynamoDB** allows for the storage of **large text and BLOB**, but there is a **limit of 400KB** for the **combination of Value and Name**.
+* DynamoDB **Transaction** are expensive than single operations.  

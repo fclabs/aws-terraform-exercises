@@ -37,7 +37,7 @@ With **long polling**, the **ReceiveMessage** request queries all of the servers
 * Messages are 256KB in size or less.
 * Messages can be **kept in the queue from 1 minute to 14 days**; the **default** retention period is **4 days**.
 * **At-least-once-delivered**, A message is delivered at least once, but occasionally more than one copy of a message is delivered.
-* **Visibility timeout** - a period of time during which Amazon SQS prevents other consumers from receiving and processing the message. The **default visibility timeout for a message is 30 seconds**. The **minimum is 0 seconds**. The **maximum is 12 hours**.
+* **Visibility timeout** - a period of time during which Amazon SQS prevents other consumers from receiving and processing the message. The **default visibility timeout** for a message is **30 seconds**. The **minimum is 0 seconds**. The **maximum is 12 hours**.
 * **Standard Queues** - ***at-least-once*** process the message, ***best-effort*** to keep it in ***order***. 
 * **FIFO Queue** - designed to enhance messaging between applications when the ***order of operations and events is critical, or where duplicates can't be tolerated***
 * If a message is processed multiple times the queue might have a **visibility timeout shorter that the time to process** the message requires. **Increase the timeout to avoid duplication**. 

@@ -37,6 +37,8 @@
 
 ![S3 Storage Classes](S3-Storage-Classes.png)
 
+
+
 ### Data consistency
 * *Read after Writes Consistency* (PUTS of new object)
 * *Eventual Consistency* for overwrite PUTS and DELETES (these operation takes time to propagate)
@@ -47,6 +49,7 @@
 * 99.999999999 (11 9s) durability of the information
 * For S3 Standard, S3 Standard-IA, and S3 Glacier storage classes, objects are automatically stored across multiple devices spanning a minimum of three Availability Zones in a region.
 * S3 One Zone-IA storage class are stored redundantly within a single Availability Zone in the AWS Region you select.
+* **Reduced Redundancy Storage** is the only class that **does not offer 99.999999999 durability**.
 
 ### Charges on S3
 * Pay for what you use. Costs vary per region (based on cost)
@@ -74,6 +77,28 @@
 * Access-Points allowed you to separate different access policies for each typo of consumer that you have, simplifying your bucket policies.
 * Object-lock blocks object version deletion. Useful to enforce WORM (Write-Once-Read-Many) style storage.
 * Amazon Macie is a AI service that will help you to discover and classify data in S3
+
+### Static Web sites
+
+When you configure your bucket as a static website, the **website is available at the AWS Region-specific website endpoint** of the bucket. Website endpoints are different from the endpoints where you send REST API requests.
+
+Depending on your Region, your Amazon S3 website endpoint follows one of these two formats.
+```
+s3-website dash (-) Region ‐ http://bucket-name.s3-website-Region.amazonaws.com
+s3-website dot (.) Region ‐ http://bucket-name.s3-website.Region.amazonaws.com
+```
+
+**Virtual hosting** is the practice of serving **multiple websites from a single web server**. One way to differentiate sites is by using the apparent hostname of the request instead of just the path name part of the URI. An ordinary Amazon S3 REST request specifies a bucket by using the first slash-delimited component of the Request-URI path. Or, you can use Amazon S3 virtual hosting to address a bucket in a REST API call by using the **HTTP Host header**.
+
+Virtual Host style URL:
+```
+https://bucket-name.s3.Region.amazonaws.com/key_name
+```
+Path style URL (Deprecated in favor of Virtual Host URL):
+```
+https://s3.Region.amazonaws.com/bucket-name/key_name
+```
+
 
 ### Lifecycle Management
 * S3 Lifecycle management provides the ability to make object transitions between storage classes or object expirations (Amazon deletes expired objects on your behalf)
