@@ -22,6 +22,7 @@ Management
   * [Elastic Load Balancer](./elb/readme.md)
   * [Autoscaling](./autoscaling/readme.md)
   * [ElasticBeanstalk](./elasticbeanstalk/readme.md)
+  * [CloudFormation](./cloudformation/readme.md)
 * Storage
   * [S3](s3/readme.md)
     * [Macie](./aws-macie/readme.md)

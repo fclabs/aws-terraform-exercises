@@ -31,6 +31,10 @@ With **short polling**, the **ReceiveMessage** request queries only a subset of 
 
 With **long polling**, the **ReceiveMessage** request queries all of the servers for messages. **Amazon SQS sends a response after it collects at least one available message**, up to the maximum number of messages specified in the request. **Amazon SQS sends an empty response only if the polling wait time expires**.
 
+Short polling occurs when the **WaitTimeSeconds** parameter of a ReceiveMessage request is set to 0 in one of two ways:
+* The **ReceiveMessage call sets WaitTimeSeconds to 0**.
+* The ReceiveMessage call **doesn’t set WaitTimeSeconds**, but the queue attribute **ReceiveMessageWaitTimeSeconds is set to 0**.
+
 
 ## Exam Tips
 * **SQS is pull-based**, not pushed-based.
