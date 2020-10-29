@@ -3,6 +3,8 @@
 
 AWS Storage Gateway connects an on-premises software appliance with cloud-based storage to provide seamless integration with data security features between your on-premises IT environment and the AWS storage infrastructure.
 
+Supports being deployed into your on-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper-V hypervisor.
+
 
 ### Gateway Types
 * **File Gateway**: supports a file interface into Amazon Simple Storage Service (Amazon S3) and combines a service and a virtual software appliance. By using this combination, you can store and retrieve objects in Amazon S3 using industry-standard file protocols such as **Network File System (NFS) and Server Message Block (SMB)**. 
@@ -16,7 +18,7 @@ AWS Storage Gateway connects an on-premises software appliance with cloud-based 
 ![](./aws-storage-gateway-cached-diagram.png)
 
 * **Tape Gateway**: A tape gateway provides cloud-backed virtual tape storage. 
-* All options supports being deployed into your on-premises environment as a VM running on VMware ESXi, KVM, or Microsoft Hyper-V hypervisor.
+
 
 ![](./Gateway-VTL-Architecture2-diagram.png)
 
