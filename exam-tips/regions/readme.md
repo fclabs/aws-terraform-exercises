@@ -1,4 +1,4 @@
-# Regions, Avalabilty Zones & Local Zones
+# Regions, Availability Zones & Local Zones
 ## Regions
 
 Each Amazon EC2 Region is designed to be isolated from the other Amazon EC2 Regions. This achieves the greatest possible fault tolerance and stability.

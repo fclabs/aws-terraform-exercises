@@ -25,11 +25,18 @@ The following terminology and concepts are central to your understanding and use
 * **Percentiles**: indicates the relative standing of a value in a dataset. Percentiles help you get a better understanding of the distribution of your metric data. Percentiles are often ***used to isolate anomalies.***
 * **Alarms**: You can use an alarm to automatically ***initiate actions*** on your behalf. An alarm watches a single metric over a specified time period, and performs one or more specified actions, based on the value of the metric relative to a threshold over time. 
 
-## Essential Tips
+### Metrics Retention
 
+CloudWatch retains metric data as follows:
+* Data points with a period of less than 60 seconds are available for 3 hours. These data points are high-resolution custom metrics.
+* Data points with a period of 60 seconds (1 minute) are available for 15 days
+* Data points with a period of 300 seconds (5 minute) are available for 63 days
+* Data points with a period of 3600 seconds (1 hour) are available for 455 days (15 months)
 
-## Labs about
-*
+## Exam-Tips
+* CloudWatch is used for performance
+* Default CloudWatch resolution is 5 minutes
+* Detailed monitoring resolution is 1 minute
+* Minimal resolution is one second (retention 3 hours), maximal retention is 15 months (1 hour resolution)
 
-## References and complementary readings
 
