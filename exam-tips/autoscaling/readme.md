@@ -20,14 +20,19 @@ Components in Auto Scaling groups:
 * **Use predictive scaling** - You can also use Amazon EC2 Auto Scaling in combination with AWS Auto Scaling to scale resources across multiple services. **AWS Auto Scaling** can help you maintain optimal availability and performance by combining predictive scaling and dynamic scaling (proactive and reactive approaches, respectively) to **scale your Amazon EC2 capacity faster**.
 
 ### Warm-up time
-After determining that a newly launched instance is healthy, Amazon EC2 Auto Scaling does not immediately move on to the next replacement. It provides a window for each instance to **warm up after launching**, which you can configure. This can be helpful when you have** configuration scripts that take time to run**. To protect your application's availability, ensure that the instance **warm-up period covers the expected startup time for your application, from when a new instance comes into service to when it can receive traffic**.
+After determining that a newly launched instance is healthy, Amazon EC2 Auto Scaling does not immediately move on to the next replacement. It provides a window for each instance to **warm up after launching**, which you can configure. This can be helpful when you have **configuration scripts that take time to run**. To protect your application's availability, ensure that the instance **warm-up period covers the expected startup time for your application, from when a new instance comes into service to when it can receive traffic**.
 
-### Scaling Cooldown
-A scaling cooldown helps you **prevent** your Auto Scaling group from **launching or terminating additional instances before the effects of previous activities are visible**.
+### Scaling Cool down
+A scaling cool down helps you **prevent** your Auto Scaling group from **launching or terminating additional instances before the effects of previous activities are visible**.
 
 When you use simple scaling, after the Auto Scaling group scales using a simple scaling policy, it waits for a cooldown period to complete before any further scaling activities due to simple scaling policies can start. An **adequate cooldown period helps to prevent the initiation of an additional scaling activity based on stale metrics**. 
 
+### Scaling policies
+Amazon EC2 Auto Scaling supports the following types of scaling policies:
 
+* **Target tracking scaling** — With target tracking scaling policies, you select a **scaling metric and set a target value**. Amazon EC2 Auto Scaling creates and manages the **CloudWatch alarms** that trigger the scaling policy and calculates the scaling adjustment based on the metric and the target value. The scaling policy adds or removes capacity as required to keep the metric at, or close to, the specified target value. In addition to keeping the metric close to the target value, a target tracking scaling policy also adjusts to changes in the metric due to a changing load pattern.
+* **Step scaling** — Increase or decrease the current capacity of the group based on a set of scaling adjustments, known as step adjustments, that vary based on the size of the alarm breach.
+* **Simple scaling** — Increase or decrease the current capacity of the group based on a single scaling adjustment.
 
 ## Exam Tips
 * Scaling Options:
@@ -39,3 +44,4 @@ When you use simple scaling, after the Auto Scaling group scales using a simple 
 * **Before** you can create an **Autoscaling Group** you need to **create a Launch configuration**.
 * If add **multiple subnets**, it will **distribute** instances between subnets.
 * **Warm-up time** is the how much time new instances need to start being considered as **functional in the scaling group**. 
+* Scaling policies

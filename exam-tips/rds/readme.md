@@ -56,7 +56,7 @@ The data transferred for cross-Region replication incurs Amazon RDS data transfe
 * When you create a read replica, Amazon RDS takes a snapshot of the source instance and transfers the snapshot to the read replica AWS Region.
 * For each data modification made in the source databases, Amazon RDS transfers data from the source AWS Region to the read replica AWS Region.
 
-## Backups
+### Backups
 Amazon RDS creates and saves **automated backups** of your DB instance **during the backup window** of your DB instance. RDS creates a **storage volume snapshot** of your DB instance, backing up the **entire DB instance and not just individual databases**. RDS saves the automated backups of your DB instance according to the backup retention period that you specify. If necessary, **you can recover your database to any point in time during the backup retention period**. Backups are stored in Amazon S3.
 
 You can also back up your DB instance manually, by manually creating a **DB snapshot**. The first snapshot of a DB instance contains the data for the full DB instance. **Subsequent snapshots** of the same DB instance **are incremental**, which means that only the data that has changed after your most recent snapshot is saved.
@@ -64,6 +64,9 @@ You can also back up your DB instance manually, by manually creating a **DB snap
 Automated backups occur daily during the **preferred backup window**. If the backup requires more time than allotted to the backup window, the **backup continues after the window ends, until it finishes**. 
 
 **Restore** a backup will create a **new DB instance** and will have a **new endpoint DNS record**.
+
+Recovery time objective (RTO) and recovery point objective (RPO) are two key metrics to consider when developing a DR plan. **RTO represents** how many hours it takes you to **return to a working state after a disaster**. **RPO**, which is also expressed in hours, **represents how much data you could lose** when a disaster happens.
+
 
 ## RDS Exam Tips
 * **RDS runs on virtual machines**. Except for Aurora Server-less, **RDS is not server-less**
@@ -79,3 +82,5 @@ Automated backups occur daily during the **preferred backup window**. If the bac
 * When you **create an RDS instance**, **you can choose the Availability Zone**, or let AWS to choose one for you. 
 * There is **no charge on data transfer** for data replication in the **same region**. 
 * When **Security Group is created** for RDS, the destination **port** is set **automatically**. 
+* **Recovery Time Objective (RTO)** - how much **time to return** to a working state after a disaster
+* **Recovery Point Objective (RPO)** - how much data could be lost when a disaster happens

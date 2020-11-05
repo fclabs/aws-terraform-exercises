@@ -15,6 +15,7 @@
 Management
   * [CloudWatch](./cloudwatch/readme.md)
   * [SSM Parameter Store](./ssm-param/readme.md)
+  * [SSM Command](./ssm-command/readme.md) 
 * [EC2](ec2/readme.md)
   * [EBS](./ebs/readme.md)
   * [HPC in AWS](./hpc-in-aws/readme.md)

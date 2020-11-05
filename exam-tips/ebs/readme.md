@@ -1,6 +1,8 @@
 # EBS and Instance store
 
-## Storage for Instances (EBS)
+## Concepts
+
+### Storage for Instances (EBS)
 Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances. EBS volumes that are attached to an instance are exposed as storage volumes that persist independently from the life of the instance. You can create a file system on top of these volumes, or use them in any way you would use a block device (such as a hard drive). You can dynamically change the configuration of a volume attached to an instance. 
 EBS Volume types:
 * **gp2 - General Purpose SSD**: base performance of ***3 IOPS/GiB***, with the ability to ***burst to 3,000 IOPS*** for extended periods of time. These volumes are ideal for a broad range of use cases such as boot volumes, small and medium-size databases, and development and test environments. 
@@ -10,7 +12,7 @@ EBS Volume types:
 
 **By default EBS volume is deleted when the instance is terminated.**
 
-## EBS & Instance Store Tips:
+### EBS & Instance Store Tips:
 * EBS volume always share the ***same Availability Zone*** as the Instance.
 * Volumes are not encrypted by default.
 * **Root volume** is marked to be ***deleted on termination*** by default. 
@@ -33,7 +35,7 @@ EBS Volume types:
 * Once a volume is encrypted, all the snapshots are going to be encrypted. If you want to share the image or the snapshot, you can't do it without un encrypted.
 * **HDD (st1, sc1) are going to be always cheaper than SSD options (io1, gp2)**
 
-## Snapshots
+### Snapshots
 
 You can **back up the data on your Amazon EBS volumes to Amazon S3** by taking point-in-time snapshots. **Snapshots are incremental backups**, which means that only the blocks on the device that have changed after your most recent snapshot are saved. This minimizes the time required to create the snapshot and saves on storage costs by not duplicating data. Each snapshot contains all of the information that is needed to restore your data (from the moment when the snapshot was taken) to a new EBS volume.
 
@@ -45,7 +47,7 @@ The **replicated volume loads data in the background** so that you can begin usi
 
 **Charges** for your snapshots are based on the **amount of data stored**. Because snapshots are incremental, ***deleting a snapshot might not reduce your data storage costs***. Data referenced exclusively by a snapshot is removed when that snapshot is deleted, but ***data referenced by other snapshots is preserved***. 
 
-## Snapshot encryption
+### Snapshot encryption
 * EBS snapshots fully support EBS encryption.
 * Snapshots of encrypted volumes are automatically encrypted.
 * Volumes that you create from encrypted snapshots are automatically encrypted.
@@ -55,8 +57,16 @@ The **replicated volume loads data in the background** so that you can begin usi
 * The first snapshot you take of an encrypted volume that has been created from an unencrypted snapshot is always a full snapshot.
 * The first snapshot you take of a reencrypted volume, which has a different CMK compared to the source snapshot, is always a full snapshot.
 
-## Sharing snapshots
+### Sharing snapshots
 
 By modifying the permissions of a snapshot, **you can share it with the AWS accounts that you specify**. Users that you have authorized can use the snapshots you share as the basis for creating their own EBS volumes, while your **original snapshot remains unaffected**.
 
 If you choose, you can make your unencrypted snapshots available publicly to all AWS users. **You can't make your encrypted snapshots available publicly.**
+
+### Amazon Data Lifecycle Manager & EBS
+
+You can use Amazon Data Lifecycle Manager to automate the creation, retention, and deletion of snapshots that you use to back up your Amazon EBS volumes. A lifecycle policy consists of these core settings:
+* **Resource type** — Defines the type of AWS resource managed by the policy. Use VOLUME to create snapshots of individual volumes or use INSTANCE to create multi-volume snapshots from the volumes for an instance. For more information, see Multi-volume snapshots.
+* **Target tags** — Specifies the tags that must be associated with an EBS volume or an Amazon EC2 instance for it to be managed by the policy.
+* **Schedules** - The start times and intervals for creating snapshots. The first snapshot is created by a policy within one hour after the specified start time. Subsequent snapshots are created within one hour of their scheduled time. A policy can have up to four schedules; one mandatory schedule and up to three optional schedules. For more information, see Policy schedules.
+* **Retention** — Specifies how snapshots are retained. You can retain snapshots based on either the total count of snapshots or the age of each snapshot.

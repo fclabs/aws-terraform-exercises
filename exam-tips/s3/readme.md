@@ -71,12 +71,13 @@
 * Access can be audited using CloudTrail
 * Encryption can be done using
   * SSE-S3: Amazon managed S3 keys
-  * SSE-C: Customer managed encryption keys
+  * SSE-C: Customer managed encryption keys. Keys needs to be provided on each object creation and read. **AWS do not store the keys.**
   * SSE-KMS: KMS encryption keys
   * Client side encryption.
 * Access-Points allowed you to separate different access policies for each typo of consumer that you have, simplifying your bucket policies.
 * Object-lock blocks object version deletion. Useful to enforce WORM (Write-Once-Read-Many) style storage.
 * Amazon Macie is a AI service that will help you to discover and classify data in S3
+* If versioning is enabled, encrypt an unencrypted object will leave a version of the unencrypted object and only the new version will be encrypted.
 
 ### Static Web sites
 
@@ -194,6 +195,7 @@ Permanent Delete by Name and ID
 * Is used with NFS or SMB file-systems.
 * Replication can be done hourly, daily or weekly.
 * Can copy from EFS to EFS.
+
 
 ## Labs about
 * [Static Website based on S3 and Lambda functions](webpage-s3-lambda/)

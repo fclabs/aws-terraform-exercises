@@ -37,3 +37,6 @@ System Impaired | 12 hours | Non-critical functions of your application are beh
 Production system impaired | **4 hours** | Important functions of your application are impaired or degraded. (Business and Enterprise support plans)
 Production system down | **1 hour** | Your business is significantly impacted. Important functions of your application aren't available. (Business and Enterprise support plans)
 **Business critical** system down | **15 minutes** | Your business is at risk. Critical functions of your application aren't available. (Enterprise support plan)
+
+## Exam tips
+* API Support API is only available in Business and Enterprise plans

@@ -56,7 +56,7 @@ Route 53 doesn't charge for alias queries to ELB load balancers or other AWS res
 * **Weighted routing** - Distribute traffic based on ratios. Supports Health checks on individual records.
 * **Latency Routing** - Based on latency between the user region and the latency between regions. 
 * **Failover Routing** - Route traffic based on an Active/Passive schema using health checks to verify a resource failure. 
-* **Geolocation Routing** - Route traffic based on geographical location os the source IP dns query.
+* **Geolocation Routing** - Route traffic based on geographical location os the source IP DNS query. Geolocation works by **mapping IP addresses to locations**. 
 * **Geoproximity routing** - Geolocation with bias to expand geographic regions.
 * **Multivalue answer routing** - return multiple records of the health records.
 * Route 53 support **edns-client-subnet extension of EDNS0** record, that holds part of the source IP that made the query to the client DNS server.
