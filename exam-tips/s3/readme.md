@@ -78,6 +78,7 @@
 * Object-lock blocks object version deletion. Useful to enforce WORM (Write-Once-Read-Many) style storage.
 * Amazon Macie is a AI service that will help you to discover and classify data in S3
 * If versioning is enabled, encrypt an unencrypted object will leave a version of the unencrypted object and only the new version will be encrypted.
+* **S3 pre-signed URLs** are a method to share object access wit others for a limited period of time. Useful to avoid ***content scraping***. Default sharing period is **1 hour**.
 
 ### Static Web sites
 

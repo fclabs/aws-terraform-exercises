@@ -25,7 +25,7 @@ Successful authenticated users get **temporary credentials which maps to an IAM 
 
 Use JWT to generate the access credentials.
 
-### Amazon Cognito Sync
+### Amazon Cognito Sync
 
 Amazon Cognito Sync is an AWS service and client library that enables **cross-device syncing of application-related user data**. You can use it to synchronize user profile data across mobile devices and the web without requiring your own backend. The client libraries cache data locally so your app can read and write data regardless of device connectivity status. **When the device is online, you can synchronize data, and if you set up push sync, notify other devices immediately that an update is available**. It use SNS.
 
@@ -38,4 +38,4 @@ Amazon Cognito Sync is an AWS service and client library that enables **cross-de
     3. **Authentication token** is exchanges with **AWS credentials** that allows the user to **assume an IAM role**.
 * **Cognito** is an Identity Broker which handles interaction between your applications and the Web ID provider.
 * **User pools** is user based. Handles thinks like registration, authentication, and account recovery.
-* **Identity pools** - authorize access to your AWS resources.
+* **Identity pools** - Give your application users temporary, controlled access to other services in your account.

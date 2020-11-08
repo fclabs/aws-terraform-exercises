@@ -12,5 +12,7 @@ You can create two types of trails for an AWS account:
 **Trails will be viewable only in the AWS Regions where they log events**. If you create a trail that logs events in all AWS Regions, it will appear in the console in all AWS Regions. If you create a trail that only logs events in a single AWS Region, you can view and manage it only in that AWS Region.
 
 
-## References and complementary readings
-
+## Exam Tips
+* **Trails will be viewable only in the AWS Regions where they log events**. If you create a trail that logs events in all AWS Regions, it will appear in the console in all AWS Regions. If you create a trail that only logs events in a single AWS Region, you can view and manage it only in that AWS Region.
+* **CloudTrail** is use to know **who did what in AWS**. **CloudWatch** focus in the **service and application logs**, not the API.
+* **S3 object or any other data access logs are no CloudTrail events.**

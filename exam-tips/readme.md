@@ -12,6 +12,7 @@
   * [CloudHSM](./cloud-hsm/readme.md)
   * [Secrets Manager](./secret-manager/readme.md)
   * [AWS Shield](./aws-shield/readme.md)
+  * [Cognito](./cognito/readme.md)
 Management
   * [CloudWatch](./cloudwatch/readme.md)
   * [SSM Parameter Store](./ssm-param/readme.md)

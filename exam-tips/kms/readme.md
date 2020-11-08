@@ -44,9 +44,24 @@ Envelope encryption offers several benefits:
 * **Encrypting the same data under multiple master keys** - Encryption operations can be time consuming, particularly when the data being encrypted are large objects. Instead of re-encrypting raw data multiple times with different keys, you can **re-encrypt only the data keys that protect the raw data**.
 * **Combining the strengths of multiple algorithms** - In general, symmetric key algorithms are faster and produce smaller ciphertexts than public key algorithms. But public key algorithms provide inherent separation of roles and easier key management. Envelope encryption lets you combine the strengths of each strategy.
 
+### Rotating Keys
+
+Cryptographic best practices discourage extensive reuse of encryption keys. To create new cryptographic material for your AWS Key Management Service (AWS KMS) customer master keys (CMKs), you can create new CMKs, and then change your applications or aliases to use the new CMKs. Or, you can enable automatic key rotation for an existing customer managed CMK.
+
+When you enable **automatic key rotation** for a customer managed CMK, AWS KMS generates new cryptographic material for the CMK every year. **AWS KMS also saves the CMK's older cryptographic material in perpetuity** so it can be used to decrypt data that it encrypted. AWS KMS **does not delete any rotated key material until you delete the CMK.**
+
+![Key rotation](./key-rotation-auto.png)
+
+Automatic CMK rotation steps:
+* Creates a new Key
+* Disable and preserve the old key
+* Monitor the use of the old key
+
 ## Exam-Tips
 * **Regional** secure key service. Secrets does not leave the region.
 * Always include the **root account as a default policy** in your KMS policies. If you deletes lose access to your KMS policy, you must ask AWS Support to re enable. 
 * If you need to **move a Key from one region to another**, you need to **decrypt the object and encrypt it again** in the destination region.
 * For large amount of data, **envelop encryption allows you to use KMS to encrypt the master-key**, so you can encrypt and decrypt locally using an KMS encrypted key. 
 * **KMS supports only FIPS140-2 Level 2**
+* **CMK Backup is always enabled**. Keys are only deleted when the CMK is deleted.
+* **AWS Managed Key are rotated every 3 years.**
