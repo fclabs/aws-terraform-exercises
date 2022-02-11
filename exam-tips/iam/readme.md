@@ -59,3 +59,12 @@ A policy is an object in AWS that, when associated with an identity or resource,
 Is used to limit the **maximum permission** of a user/role and prevent privilege escalation or unnecessarily broad permissions. It is an additional constrain over the IAM policy.
 
 The effective access will be defined for the common permissions between the boundary and the policy.
+
+## IAM Securoty Tools
+### IAM Credential Report (account-level)
+
+Report that lists all your account's users and the status of their various credentials
+
+### IAM Access Advisor (user-level)
+
+Access advisor shows the service permissions granted to a user and when those services were last accessed.
