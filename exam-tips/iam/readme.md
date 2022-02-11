@@ -20,8 +20,11 @@
 ### Power Users
 * Power users are users with an Admin Role to manage all AWS resources except IAM.
 
-## Instances Roles
-* Roles that you can attach to your EC2 instances. It is more secure than use Access/Secure keys.
+## Service Roles
+* Roles allow you give permissions to a AWS Service to access or make changes in other AWS services/accounts. 
+* Policies should be attached to the role to give permissions to it.
+## Instances profiles
+* EC2 profiles attach EC2 roles to your EC2 instances. It is more secure than use Access/Secure keys.
 * Can be attached on-demand while the instance is running using the console or the API/CLI
 * As everything in IAM, they are universal. 
 
@@ -67,4 +70,7 @@ Report that lists all your account's users and the status of their various crede
 
 ### IAM Access Advisor (user-level)
 
-Access advisor shows the service permissions granted to a user and when those services were last accessed.
+Access advisor shows the service permissions granted to a user and when those services were last 
+
+### Generate policy based on CloudTrail history
+Analize CloudTrail access for that role and propose a new role with the least access required to reproduce the same access actions executed in the past. 
