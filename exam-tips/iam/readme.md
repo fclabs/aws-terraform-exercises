@@ -17,6 +17,11 @@
   * Policies
   * Roles
 
+### Groups 
+* Used to organize the relation beween different job-roles and users . 
+* Groups can contain only users. The cannot contain other groups.
+* Users can belomg to many groups
+* A user that belong to a group with have the same policies of the group. If belongs to many groups, it will have the union of all groups policies. 
 ### Power Users
 * Power users are users with an Admin Role to manage all AWS resources except IAM.
 
@@ -68,7 +73,7 @@ The effective access will be defined for the common permissions between the boun
 
 Report that lists all your account's users and the status of their various credentials
 
-### IAM Access Advisor (user-level)
+### IAM Access Advisor (user/role-level)
 
 Access advisor shows the service permissions granted to a user and when those services were last 
 
